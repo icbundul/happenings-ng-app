@@ -1,0 +1,20 @@
+<h2>My Happenings</h2>
+<ul class="happenings">
+  <li *ngFor="let happening of happenings"  [class.selected]="happening === selectedHappening" (click)="onSelect(happening)">
+    <span class="badge">{{happening.id}}</span> {{happening.name}}
+  </li>
+</ul>
+
+<br />
+
+<div *ngIf="selectedHappening">
+
+  <h2>{{selectedHappening.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{selectedHappening.id}}</div>
+  <div>
+    <label>name:
+    <input [(ngModel)]="selectedHappening.name" placeholder="name"/>
+    </label>
+  </div>
+
+</div>
