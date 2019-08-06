@@ -10,6 +10,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import {Router, RouterModule, Routes} from "@angular/router";
 import {FormsModule} from "@angular/forms"
 import {HttpClientModule} from "@angular/common/http";
+import { HappeningDetailComponent } from './happening-detail/happening-detail.component';
 
 const appRoutes :Routes =  [
   {
@@ -37,7 +38,8 @@ const appRoutes :Routes =  [
     NavigationComponent,
     FeedbackComponent,
     HappeningsComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    HappeningDetailComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Happening} from "../domain/Happening";
-import {HAPPENINGS} from '../mock-happenings';
+import { Happening } from '../domain/Happening';
+import { HappeningService } from '../services/happening.service';
 
 @Component({
   selector: 'app-happenings',
@@ -9,16 +9,22 @@ import {HAPPENINGS} from '../mock-happenings';
 })
 export class HappeningsComponent implements OnInit {
 
-  happenings = HAPPENINGS;
+  happenings: Happening[];
+
   selectedHappening: Happening;
 
-  constructor() { }
+  constructor(private happeningService: HappeningService) { }
 
   ngOnInit() {
+    this.getHappenings();
   }
 
   onSelect(happening: Happening) {
     this.selectedHappening = happening;
+  }
+
+  getHappenings(): void {
+    this.happenings = this.happeningService.getHappenings();
   }
 
 }
