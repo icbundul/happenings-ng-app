@@ -11,6 +11,7 @@ import {Router, RouterModule, Routes} from "@angular/router";
 import {FormsModule} from "@angular/forms"
 import {HttpClientModule} from "@angular/common/http";
 import { HappeningDetailComponent } from './happening-detail/happening-detail.component';
+import { MessagesComponent } from './messages/messages.component';
 
 const appRoutes :Routes =  [
   {
@@ -39,7 +40,8 @@ const appRoutes :Routes =  [
     FeedbackComponent,
     HappeningsComponent,
     NotFoundComponent,
-    HappeningDetailComponent
+    HappeningDetailComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,

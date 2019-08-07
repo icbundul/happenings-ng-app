@@ -24,7 +24,8 @@ export class HappeningsComponent implements OnInit {
   }
 
   getHappenings(): void {
-    this.happenings = this.happeningService.getHappenings();
+    this.happeningService.getHappenings()
+      .subscribe(happenings => this.happenings = happenings);
   }
 
 }
