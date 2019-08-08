@@ -7,12 +7,14 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { HappeningsComponent } from './happenings/happenings.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import {Router, RouterModule, Routes} from "@angular/router";
-import {FormsModule} from "@angular/forms"
-import {HttpClientModule} from "@angular/common/http";
+import {Router, RouterModule, Routes} from '@angular/router';
+import {FormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 import { HappeningDetailComponent } from './happening-detail/happening-detail.component';
 import { MessagesComponent } from './messages/messages.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
+/*
 const appRoutes :Routes =  [
   {
     path: 'happenings',
@@ -32,6 +34,7 @@ const appRoutes :Routes =  [
     component: NotFoundComponent
   }
 ];
+*/
 
 @NgModule({
   declarations: [
@@ -41,14 +44,15 @@ const appRoutes :Routes =  [
     HappeningsComponent,
     NotFoundComponent,
     HappeningDetailComponent,
-    MessagesComponent
+    MessagesComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes, {enableTracing:true})
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
