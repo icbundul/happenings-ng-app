@@ -1,4 +1,4 @@
-export class BaseEntity {
+export abstract class BaseEntity {
 
   id: number;
 
