@@ -1,11 +1,22 @@
 <h2>My Happenings</h2>
-<ul class="happenings">
+<!--Code testing to display details on same page-->
+<!--<ul class="happenings">
   <li *ngFor="let happening of happenings"
       [class.selected]="happening === selectedHappening"
       (click)="onSelect(happening)">
     <span class="badge">{{happening.id}}</span> {{happening.name}}
   </li>
+</ul>-->
+<!--End code testing-->
+
+<ul class="happenings">
+  <li *ngFor="let happening of happenings">
+    <a routerLink="/detail/{{happening.id}}">
+      <span class="badge">{{happening.id}}</span> {{happening.name}}
+    </a>
+  </li>
 </ul>
+
 
 <br />
 

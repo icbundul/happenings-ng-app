@@ -11,7 +11,7 @@ export class HappeningsComponent implements OnInit {
 
   happenings: Happening[];
 
-  selectedHappening: Happening;
+  /*selectedHappening: Happening;*/
 
   constructor(private happeningService: HappeningService) { }
 
@@ -19,9 +19,9 @@ export class HappeningsComponent implements OnInit {
     this.getHappenings();
   }
 
-  onSelect(happening: Happening) {
+/*  onSelect(happening: Happening) {
     this.selectedHappening = happening;
-  }
+  }*/
 
   getHappenings(): void {
     this.happeningService.getHappenings()

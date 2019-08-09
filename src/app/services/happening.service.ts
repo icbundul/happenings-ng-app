@@ -16,4 +16,10 @@ export class HappeningService {
     this.messageService.add(this.constructor.name + ': fetched happenings');
     return of(HAPPENINGS);
   }
+
+  getHappening(id: number): Observable<Happening> {
+    // TODO: send the message _after_ fetching the happening
+    this.messageService.add(this.constructor.name + `: fetched ha id=${id}`);
+    return of(HAPPENINGS.find(hero => hero.id === id));
+  }
 }
