@@ -35,8 +35,8 @@ export class HappeningService extends MainService {
 
   getHappening(id: number): Observable<Happening> {
 
-    const url = `${this.HAPPENINGS_URL}${id}`;
-    return this.http.get<Happening>(url).pipe(
+    const urlGetById = `${this.HAPPENINGS_URL}${id}`;
+    return this.http.get<Happening>(urlGetById).pipe(
       tap(_ => this.log(`fetched hero id=${id}`)),
       catchError(this.handleError<Happening>(`getHero id=${id}`))
     );
@@ -55,6 +55,17 @@ export class HappeningService extends MainService {
     return this.http.post<Happening>(this.HAPPENINGS_URL, happening, this.httpOptions).pipe(
       tap((newHappening: Happening) => this.log(`added happening w/ id=${newHappening.id}`)),
       catchError(this.handleError<Happening>('addHappening'))
+    );
+  }
+
+  /** DELETE: delete the hero from the server */
+  deleteHappening (happening: Happening | number): Observable<Happening> {
+    const id = typeof happening === 'number' ? happening : happening.id;
+    const urlGetById = `${this.HAPPENINGS_URL}/${id}`;
+
+    return this.http.delete<Happening>(urlGetById, this.httpOptions).pipe(
+      tap(_ => this.log(`deleted happening id=${id}`)),
+      catchError(this.handleError<Happening>('deleteHappening'))
     );
   }
 }

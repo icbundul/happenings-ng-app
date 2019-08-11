@@ -30,11 +30,20 @@ export class HappeningsComponent implements OnInit {
 
   add(name: string): void {
     name = name.trim();
-    if (!name) { return; }
+
+    if (!name) {
+      return;
+    }
+
     this.happeningService.addHappening({ name } as Happening)
       .subscribe(happening => {
         this.happenings.push(happening);
       });
+  }
+
+  delete(happening: Happening): void {
+    this.happenings = this.happenings.filter(h => h !== happening);
+    this.happeningService.deleteHappening(happening).subscribe();
   }
 
 }
