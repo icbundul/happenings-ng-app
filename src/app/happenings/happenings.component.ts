@@ -28,4 +28,13 @@ export class HappeningsComponent implements OnInit {
       .subscribe(happenings => this.happenings = happenings);
   }
 
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.happeningService.addHappening({ name } as Happening)
+      .subscribe(happening => {
+        this.happenings.push(happening);
+      });
+  }
+
 }

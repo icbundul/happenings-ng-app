@@ -30,4 +30,9 @@ export class HappeningDetailComponent implements OnInit {
      this.location.back();
   }
 
+  save(): void {
+    this.happeningService.updateHappening(this.happening)
+      .subscribe(() => this.goBack());
+  }
+
 }
