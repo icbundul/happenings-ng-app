@@ -1,0 +1,13 @@
+<div id="search-component">
+  <h4><label for="search-box">Happening Search</label></h4>
+
+  <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+
+  <ul class="search-result">
+    <li *ngFor="let happening of happenings$ | async" >
+      <a routerLink="/detail/{{happening.id}}">
+        {{hero.name}}
+      </a>
+    </li>
+  </ul>
+</div>
