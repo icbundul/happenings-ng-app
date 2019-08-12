@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Happening } from '../domain/Happening';
-import { HAPPENINGS } from '../mock-happenings';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './messages.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -22,8 +21,6 @@ export class HappeningService extends MainService {
   }
 
   getHappenings(): Observable<Happening[]> {
-
-    const urlGetAll = 'http://localhost:8080/api/happenings/all';
 
     return this.http.get<Happening[]>(this.ALL_HAPPENINGS_URL)
       .pipe(
@@ -66,6 +63,20 @@ export class HappeningService extends MainService {
     return this.http.delete<Happening>(urlGetById, this.httpOptions).pipe(
       tap(_ => this.log(`deleted happening id=${id}`)),
       catchError(this.handleError<Happening>('deleteHappening'))
+    );
+  }
+
+  /* GET heroes whose name contains search term */
+  searchHappenings(term: string): Observable<Happening[]> {
+    if (!term.trim()) {
+      // if not search term, return empty hero array.
+      return of([]);
+    }
+    const urlByName = `${this.HAPPENINGS_URL}?name=${term}`;
+
+    return this.http.get<Happening[]>(urlByName).pipe(
+      tap(_ => this.log(`found happening matching "${term}"`)),
+      catchError(this.handleError<Happening[]>('searchHappenings', []))
     );
   }
 }

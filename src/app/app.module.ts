@@ -13,6 +13,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { HappeningDetailComponent } from './happening-detail/happening-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { HappeningSearchComponent } from './happening-search/happening-search.component';
 
 /*
 const appRoutes :Routes =  [
@@ -45,7 +46,8 @@ const appRoutes :Routes =  [
     NotFoundComponent,
     HappeningDetailComponent,
     MessagesComponent,
-    DashboardComponent
+    DashboardComponent,
+    HappeningSearchComponent
   ],
   imports: [
     BrowserModule,
