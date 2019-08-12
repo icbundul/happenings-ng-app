@@ -72,7 +72,7 @@ export class HappeningService extends MainService {
       // if not search term, return empty hero array.
       return of([]);
     }
-    const urlByName = `${this.HAPPENINGS_URL}?name=${term}`;
+    const urlByName = `${this.HAPPENINGS_URL}search?name=${term}`;
 
     return this.http.get<Happening[]>(urlByName).pipe(
       tap(_ => this.log(`found happening matching "${term}"`)),

@@ -6,7 +6,7 @@
   <ul class="search-result">
     <li *ngFor="let happening of happenings$ | async" >
       <a routerLink="/detail/{{happening.id}}">
-        {{hero.name}}
+        {{happening.name}}
       </a>
     </li>
   </ul>
