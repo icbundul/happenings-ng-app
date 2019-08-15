@@ -12,6 +12,16 @@
   <button (click)="save()">save</button>
   <button (click)="goBack()">go back</button>
 
+
+  <app-happening-place-detail [happeningPlaceSelected]="selectedHappeningPlace">
+  </app-happening-place-detail>
+
+
+  <app-happening-place *ngFor="let n of happeningPlaces"
+            [happeningPlace]="n"
+            (happeningPlaceDeleted)="deleteHappeningPlace($event)"
+            (click)="onSelectHappeningPlace(n)">
+  </app-happening-place>
 </div>
 
 

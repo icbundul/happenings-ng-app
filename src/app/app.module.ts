@@ -14,6 +14,8 @@ import { HappeningDetailComponent } from './happening-detail/happening-detail.co
 import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HappeningSearchComponent } from './happening-search/happening-search.component';
+import { HappeningPlaceComponent } from './happening-place/happening-place.component';
+import { HappeningPlaceDetailComponent } from './happening-place-detail/happening-place-detail.component';
 
 /*
 const appRoutes :Routes =  [
@@ -47,7 +49,9 @@ const appRoutes :Routes =  [
     HappeningDetailComponent,
     MessagesComponent,
     DashboardComponent,
-    HappeningSearchComponent
+    HappeningSearchComponent,
+    HappeningPlaceComponent,
+    HappeningPlaceDetailComponent
   ],
   imports: [
     BrowserModule,

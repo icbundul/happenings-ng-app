@@ -33,9 +33,10 @@ export class HappeningService extends MainService {
   getHappening(id: number): Observable<Happening> {
 
     const urlGetById = `${this.HAPPENINGS_URL}${id}`;
+
     return this.http.get<Happening>(urlGetById).pipe(
-      tap(_ => this.log(`fetched hero id=${id}`)),
-      catchError(this.handleError<Happening>(`getHero id=${id}`))
+      tap(_ => this.log(`fetched happening id=${id}`)),
+      catchError(this.handleError<Happening>(`getHappening id=${id}`))
     );
   }
 
@@ -55,7 +56,7 @@ export class HappeningService extends MainService {
     );
   }
 
-  /** DELETE: delete the hero from the server */
+  /** DELETE: delete the happening from the server */
   deleteHappening (happening: Happening | number): Observable<Happening> {
     const id = typeof happening === 'number' ? happening : happening.id;
     const urlGetById = `${this.HAPPENINGS_URL}/${id}`;
@@ -69,7 +70,7 @@ export class HappeningService extends MainService {
   /* GET heroes whose name contains search term */
   searchHappenings(term: string): Observable<Happening[]> {
     if (!term.trim()) {
-      // if not search term, return empty hero array.
+      // if not search term, return empty happening array.
       return of([]);
     }
     const urlByName = `${this.HAPPENINGS_URL}search?name=${term}`;
