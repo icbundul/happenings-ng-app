@@ -1,8 +1,14 @@
-<div>
-  <ul>
-    <span> {{happeningPlace?.id}} </span> {{happeningPlace?.placeName}}
-      <button class="delete" title="delete happening Place"
-              (click)="deleteHappeningPlace(happeningPlace)">x</button>
-  </ul>
+<div class="well">
+  <a routerLink="/">
+    <h2>{{happeningPlace.placeName}}</h2>
+  </a>
+  <div>{{happeningPlace.adress}}</div>
+  <div>
+    <span><b>Adress:</b> {{happeningPlace.adress}}</span>
+  </div>
+  <br />
+  <button class="btn btn-primary" title="Delete Happening place"
+          (click)="deleteHappeningPlace(happeningPlace)">Delete</button>
 </div>
+
 

@@ -1,2 +1,3 @@
 /* HappeningsComponent's private CSS styles */
-
+.pad-left { margin-left: 10px; }
+.well div { color: #bbb; }

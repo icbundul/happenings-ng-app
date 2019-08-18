@@ -1,11 +1,9 @@
-
-<div><span>id: </span>{{happeningPlaceSelected?.id}}</div>
 <div>
-  <label>name:
-    <input [(ngModel)]="happeningPlaceSelected.placeName" placeholder="name"/>
+  <label>Happening place:
+    <input [(ngModel)]="happeningPlace.placeName" placeholder="name"/>
   </label>
   <!-- (click) passes input value to add() and then clears the input -->
-  <button (click)="addHappeningPlaceFromChild(happeningPlaceSelected);">
+  <button (click)="addHappeningPlaceFromChild(happeningPlace); happeningPlace={ }">
     add
   </button>
 </div>

@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {HappeningPlace} from '../../domain/HappeningPlace';
+import {Happening} from '../../domain/Happening';
 
 @Component({
   selector: 'app-happening-place-detail',
@@ -8,21 +9,21 @@ import {HappeningPlace} from '../../domain/HappeningPlace';
 })
 export class HappeningPlaceDetailComponent implements OnInit {
 
-  @Input() happeningPlaceSelected: HappeningPlace;
+  @Input() happening: Happening;
   @Output() happeningPlaceAdd: EventEmitter<HappeningPlace> = new EventEmitter<HappeningPlace>();
   happeningPlace: HappeningPlace;
-
-  // TODO do something when HappeningPlace is edited and changed, add message when selected
 
   constructor() { }
 
   ngOnInit() {
-    if (this.happeningPlaceSelected == null) {
-      this.happeningPlaceSelected = new HappeningPlace();
+    if (this.happeningPlace == null) {
+      this.happeningPlace = new HappeningPlace();
     }
+    this.happeningPlace.happening = this.happening;
   }
 
   addHappeningPlaceFromChild(happeningPlace: HappeningPlace): void {
+    happeningPlace.happening = this.happening;
     this.happeningPlaceAdd.emit(happeningPlace);
   }
 

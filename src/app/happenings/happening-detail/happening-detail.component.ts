@@ -64,10 +64,6 @@ export class HappeningDetailComponent implements OnInit {
 
   addHappeningPlace(happeningPlace: HappeningPlace): void {
 
-    if (happeningPlace.happening == null) {
-      happeningPlace.happening = this.happening;
-    }
-
     this.happeningPlaceService.addHappeningPlace(happeningPlace)
       .subscribe(res => {
 

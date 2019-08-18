@@ -12,12 +12,14 @@
   <button (click)="save()">save</button>
   <button (click)="goBack()">go back</button>
 
-  <app-happening-place-detail #happeningPlaceDetail [happeningPlaceSelected]="selectedHappeningPlace"
-                              (happeningPlaceAdd)="addHappeningPlace($event)">
+  <hr />
+
+  <app-happening-place-detail #happeningPlaceDetail [happening]="happening" (happeningPlaceAdd)="addHappeningPlace($event)">
   </app-happening-place-detail>
 
-  <button class="btn btn-primary" (click)="happeningPlaceDetail.testMethod()">Test</button>
+  <!--<button class="btn btn-primary" (click)="happeningPlaceDetail.testMethod()">Test</button>-->
 
+  <hr />
 
   <app-happening-place *ngFor="let n of happeningPlaces"
             [happeningPlace]="n"

@@ -12,18 +12,6 @@
 
 <hr />
 
-<!--
-<ul class="happenings">
-  <li *ngFor="let happening of happenings">
-    <a routerLink="/detail/{{happening.id}}">
-      <span class="badge">{{happening.id}}</span> {{happening.name}}
-    </a>
-    <button class="delete" title="delete happening"
-            (click)="delete(happening)">x</button>
-  </li>
-</ul>
--->
-
 <div class="well hoverwell thumbnail" *ngFor="let happening of happenings">
   <a routerLink="/detail/{{happening.id}}">
     <h2>{{happening.name}}</h2>
