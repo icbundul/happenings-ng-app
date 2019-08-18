@@ -1,6 +1,6 @@
 <div>
   <ul>
-    <span> {{happeningPlace.orderNumber}} </span> {{happeningPlace.placeName}}
+    <span> {{happeningPlace?.id}} </span> {{happeningPlace?.placeName}}
       <button class="delete" title="delete happening Place"
               (click)="deleteHappeningPlace(happeningPlace)">x</button>
   </ul>

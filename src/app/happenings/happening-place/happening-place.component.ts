@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import { HappeningPlace } from '../domain/HappeningPlace';
+import { HappeningPlace } from '../../domain/HappeningPlace';
 
 @Component({
   selector: 'app-happening-place',

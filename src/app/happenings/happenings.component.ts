@@ -5,7 +5,11 @@ import { HappeningService } from '../services/happening.service';
 @Component({
   selector: 'app-happenings',
   templateUrl: './happenings.component.html',
-  styleUrls: ['./happenings.component.css']
+  styleUrls: ['./happenings.component.css'],
+  styles: [`
+    .pad-left { margin-left: 10px; }
+    .well div { color: #bbb; }
+  `]
 })
 export class HappeningsComponent implements OnInit {
 

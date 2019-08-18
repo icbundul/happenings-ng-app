@@ -10,12 +10,12 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import {Router, RouterModule, Routes} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-import { HappeningDetailComponent } from './happening-detail/happening-detail.component';
+import { HappeningDetailComponent } from './happenings/happening-detail/happening-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { HappeningSearchComponent } from './happening-search/happening-search.component';
-import { HappeningPlaceComponent } from './happening-place/happening-place.component';
-import { HappeningPlaceDetailComponent } from './happening-place-detail/happening-place-detail.component';
+import { HappeningSearchComponent } from './happenings/happening-search/happening-search.component';
+import { HappeningPlaceComponent } from './happenings/happening-place/happening-place.component';
+import { HappeningPlaceDetailComponent } from './happenings/happening-place-detail/happening-place-detail.component';
 
 /*
 const appRoutes :Routes =  [

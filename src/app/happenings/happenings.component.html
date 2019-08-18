@@ -10,6 +10,9 @@
   </button>
 </div>
 
+<hr />
+
+<!--
 <ul class="happenings">
   <li *ngFor="let happening of happenings">
     <a routerLink="/detail/{{happening.id}}">
@@ -19,6 +22,29 @@
             (click)="delete(happening)">x</button>
   </li>
 </ul>
+-->
+
+<div class="well hoverwell thumbnail" *ngFor="let happening of happenings">
+  <a routerLink="/detail/{{happening.id}}">
+    <h2>{{happening.name}}</h2>
+  </a>
+    <div><b>Id:</b> {{happening.id}}</div>
+    <div>
+      <span><b>Date created:</b> {{happening.createdDatetime}}</span>
+      <span class="pad-left">{{happening.createdBy}}</span>
+    </div>
+    <div *ngIf="happening?.dateFrom">
+      <b>Date from:</b> {{happening.dateFrom}}
+    </div>
+    <div *ngIf="happening?.dateTo">
+      <b>Date to:</b> {{happening.dateTo}}
+    </div>
+    <br />
+    <div>{{happening.text}}</div>
+    <br />
+    <button class="btn btn-primary" title="delete happening"
+          (click)="delete(happening)">Delete</button>
+</div>
 
 
 <br />

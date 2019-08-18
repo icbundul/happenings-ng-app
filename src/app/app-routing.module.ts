@@ -4,7 +4,7 @@ import { HappeningsComponent } from './happenings/happenings.component';
 import {FeedbackComponent} from './feedback/feedback.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { HappeningDetailComponent } from './happening-detail/happening-detail.component';
+import { HappeningDetailComponent } from './happenings/happening-detail/happening-detail.component';
 
 
 const routes: Routes = [

@@ -1,10 +1,10 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import { Happening } from '../domain/Happening';
-import { HappeningService } from '../services/happening.service';
+import { Happening } from '../../domain/Happening';
+import { HappeningService } from '../../services/happening.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { HappeningPlace } from '../domain/HappeningPlace';
-import { HappeningPlaceService } from '../services/happening-place.service';
+import { HappeningPlace } from '../../domain/HappeningPlace';
+import { HappeningPlaceService } from '../../services/happening-place.service';
 
 @Component({
   selector: 'app-happening-detail',
@@ -60,6 +60,26 @@ export class HappeningDetailComponent implements OnInit {
 
   onSelectHappeningPlace(happeningPlace: HappeningPlace) {
     this.selectedHappeningPlace = happeningPlace;
+  }
+
+  addHappeningPlace(happeningPlace: HappeningPlace): void {
+
+    if (happeningPlace.happening == null) {
+      happeningPlace.happening = this.happening;
+    }
+
+    this.happeningPlaceService.addHappeningPlace(happeningPlace)
+      .subscribe(res => {
+
+        if (happeningPlace.id != null) {
+          const itemIndex = this.happeningPlaces.findIndex(hp => hp.id === happeningPlace.id);
+          this.happeningPlaces[itemIndex] = happeningPlace;
+        } else {
+          this.happeningPlaces.push(happeningPlace);
+        }
+      });
+
+      this.getHappeningPlacesByHappeningId();
   }
 
 }

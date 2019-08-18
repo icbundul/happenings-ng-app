@@ -5,8 +5,8 @@ import {
   debounceTime, distinctUntilChanged, switchMap
 } from 'rxjs/operators';
 
-import { Happening } from '../domain/Happening';
-import { HappeningService } from '../services/happening.service';
+import { Happening } from '../../domain/Happening';
+import { HappeningService } from '../../services/happening.service';
 
 @Component({
   selector: 'app-happening-search',

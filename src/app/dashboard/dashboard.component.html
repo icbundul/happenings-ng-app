@@ -1,11 +1,13 @@
-<h3>Top Happenings</h3>
-<div class="grid grid-pad">
-  <a *ngFor="let happening of happenings" class="col-1-4"
-  routerLink="/detail/{{happening.id}}">
+<h3>Last Happenings</h3>
+<hr />
+<div class="row">
+  <div *ngFor="let happening of happenings" class="col-1-4">
+  <a routerLink="/detail/{{happening.id}}">
     <div class="module hero">
       <h4>{{happening.name}}</h4>
     </div>
   </a>
 </div>
+
 
 <app-happening-search></app-happening-search>

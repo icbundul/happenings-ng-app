@@ -42,4 +42,12 @@ export class HappeningPlaceService extends MainService {
     );
   }
 
+  /** POST: add a new happeningPlace to the server */
+  addHappeningPlace (happeningPlace: HappeningPlace): Observable<HappeningPlace> {
+    return this.http.post<HappeningPlace>(this.HAPPENING_PLACES_URL, happeningPlace, this.httpOptions).pipe(
+      tap((newHappeningPlace: HappeningPlace) => this.log(`added happeningPlace w/ id=${newHappeningPlace.id}, happening id ${newHappeningPlace.happening.id}`)),
+      catchError(this.handleError<HappeningPlace>('addHappeningPlace'))
+    );
+  }
+
 }
