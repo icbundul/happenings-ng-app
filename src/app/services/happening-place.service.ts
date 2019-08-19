@@ -5,7 +5,7 @@ import { MessageService } from './messages.service';
 import { HappeningPlace } from '../domain/HappeningPlace';
 import { Observable } from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
-import {Happening} from '../domain/Happening';
+import {ToastrService} from './toastr.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +16,9 @@ export class HappeningPlaceService extends MainService {
   private HAPPENING_PLACE_DELETE_URL = `${this.HAPPENING_PLACES_URL}/delete/`;
 
   constructor(private http: HttpClient,
-              private messageService: MessageService) {
-    super(http, messageService);
+              private messageService: MessageService,
+              private toastrService: ToastrService) {
+    super(http, messageService, toastrService);
   }
 
   getHappeningPlacesByHappeningId(happeningId: number): Observable<HappeningPlace[]> {

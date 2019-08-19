@@ -5,6 +5,7 @@ import { MessageService } from './messages.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MainService } from './main-service';
 import { catchError, map, tap } from 'rxjs/operators';
+import {ToastrService} from './toastr.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +17,9 @@ export class HappeningService extends MainService {
   private HAPPENINGS_URL     = `${this.BASE_URL}/happenings/`;
 
   constructor(private http: HttpClient,
-              private messageService: MessageService) {
-    super(http, messageService);
+              private messageService: MessageService,
+              private toastrService: ToastrService) {
+    super(http, messageService, toastrService);
   }
 
   getHappenings(): Observable<Happening[]> {
