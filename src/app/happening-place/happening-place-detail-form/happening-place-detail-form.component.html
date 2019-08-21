@@ -1,0 +1,26 @@
+<div>
+  <!--TODO Add image tables later on in backend-->
+  <!--<img [src]="happeningPlace?.imageUrl" [alt]="happeningPlace?.name">-->
+
+  <div class="row">
+    <div class="col-md-11">
+      <h2>{{happeningPlace?.placeName}} </h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div><strong>Created by:</strong> {{happeningPlace?.createdBy}}</div>
+      <div><strong>Created datetime:</strong> {{happeningPlace?.createdDatetime}}</div>
+      <div><strong>Date from:</strong> {{happeningPlace?.dateFrom}}</div>
+      <div><strong>Date to:</strong> {{happeningPlace?.dateFrom}}</div>
+    </div>
+    <div class="col-md-6">
+      <address>
+        <strong>Notes:</strong><br />
+        {{happeningPlace?.notes}}
+      </address>
+    </div>
+  </div>
+  <button (click)="goBack()">go back</button>
+</div>
