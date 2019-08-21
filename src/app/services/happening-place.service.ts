@@ -6,6 +6,7 @@ import { HappeningPlace } from '../domain/HappeningPlace';
 import { Observable } from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
 import {ToastrService} from './toastr.service';
+import {Happening} from '../domain/Happening';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class HappeningPlaceService extends MainService {
 
   private HAPPENING_PLACES_URL = `${this.BASE_URL}/happeningplaces/`;
   private HAPPENING_PLACE_DELETE_URL = `${this.HAPPENING_PLACES_URL}/delete/`;
+  private HAPPENING_PLACE_BYID_URL = `${this.BASE_URL}/happeningplaces/byId/`;
 
   constructor(private http: HttpClient,
               private messageService: MessageService,
@@ -48,6 +50,14 @@ export class HappeningPlaceService extends MainService {
     return this.http.post<HappeningPlace>(this.HAPPENING_PLACES_URL, happeningPlace, this.httpOptions).pipe(
       tap((newHappeningPlace: HappeningPlace) => this.log(`added happeningPlace w/ id=${newHappeningPlace.id}, happening id ${newHappeningPlace.happening.id}`)),
       catchError(this.handleError<HappeningPlace>('addHappeningPlace'))
+    );
+  }
+
+  getHappeningPlaceById(id: number): Observable<HappeningPlace> {
+
+    return this.http.get<HappeningPlace>(`${this.HAPPENING_PLACE_BYID_URL}${id}`).pipe(
+      tap(_ => this.log(`fetched happeningPlace id=${id}`)),
+      catchError(this.handleError<HappeningPlace>(`getHappeningPlaceByid ${id}`))
     );
   }
 

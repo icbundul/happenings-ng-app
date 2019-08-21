@@ -1,7 +1,7 @@
 <div class="well">
-  <a routerLink="/">
+  <a [routerLink]="['/happeningplaces/byId/', happeningPlace.id]">
     <h2>{{happeningPlace.placeName}}</h2>
-  </a>
+ </a>
   <div>{{happeningPlace.adress}}</div>
   <div>
     <span><b>Adress:</b> {{happeningPlace.adress}}</span>

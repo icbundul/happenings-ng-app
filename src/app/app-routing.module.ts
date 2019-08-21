@@ -5,6 +5,7 @@ import {FeedbackComponent} from './feedback/feedback.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HappeningDetailComponent } from './happenings/happening-detail/happening-detail.component';
+import {HappeningPlaceDetailFormComponent} from './happening-place/happening-place-detail-form/happening-place-detail-form.component';
 
 
 const routes: Routes = [
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: 'feedback', component: FeedbackComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'detail/:id', component: HappeningDetailComponent },
-  { path: '', component: HappeningsComponent },
+  { path: 'happeningplaces/byId/:id', component: HappeningPlaceDetailFormComponent},
+  { path: '', component: HappeningsComponent, pathMatch: 'full' },
   { path: '**', component: NotFoundComponent  },
 ];
 
