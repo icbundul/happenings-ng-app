@@ -32,11 +32,21 @@ export class HappeningDetailComponent implements OnInit {
   }
 
   getHappening(): void {
+
+    if (this.getCurrentHappeningId() === 0) {
+      this.happening = new Happening();
+      return;
+    }
+
     this.happeningService.getHappening(this.getCurrentHappeningId()).subscribe(happening => this.happening = happening);
   }
 
   goBack(): void {
      this.location.back();
+  }
+
+  cancel(): void {
+    this.location.back();
   }
 
   save(): void {

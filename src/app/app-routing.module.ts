@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: 'happenings', component: HappeningsComponent },
   { path: 'feedback', component: FeedbackComponent },
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'new', component: HappeningDetailComponent },
   { path: 'detail/:id', component: HappeningDetailComponent },
   { path: 'happeningplaces/byId/:id', component: HappeningPlaceDetailFormComponent},
   { path: '', component: HappeningsComponent, pathMatch: 'full' },

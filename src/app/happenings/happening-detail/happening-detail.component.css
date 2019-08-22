@@ -1,5 +1,5 @@
 /* HeroDetailComponent's private CSS styles */
-label {
+/*label {
   display: inline-block;
   width: 3em;
   margin: .5em 0;
@@ -10,8 +10,8 @@ input {
   height: 2em;
   font-size: 1em;
   padding-left: .4em;
-}
-button {
+}*/
+/*button {
   margin-top: 20px;
   font-family: Arial;
   background-color: #eee;
@@ -20,12 +20,12 @@ button {
   border-radius: 4px;
   cursor: pointer;
   cursor: hand;
-}
-button:hover {
+}*/
+/*button:hover {
   background-color: #cfd8dc;
-}
-button:disabled {
+}*/
+/*button:disabled {
   background-color: #eee;
   color: #ccc;
   cursor: auto;
-}
+}*/
