@@ -46,7 +46,6 @@ export class HappeningDetailComponent implements OnInit {
   }
 
   cancel(): void {
-    this.location.back();
   }
 
   save(): void {

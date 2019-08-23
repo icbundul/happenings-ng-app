@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
@@ -17,28 +16,6 @@ import { HappeningSearchComponent } from './happenings/happening-search/happenin
 import { HappeningPlaceComponent } from './happening-place/happening-place.component';
 import { HappeningPlaceDetailComponent } from './happening-place/happening-place-detail/happening-place-detail.component';
 import { HappeningPlaceDetailFormComponent } from './happening-place/happening-place-detail-form/happening-place-detail-form.component';
-
-/*
-const appRoutes :Routes =  [
-  {
-    path: 'happenings',
-    component:HappeningsComponent
-  },
-  {
-    path: 'feedback',
-    component: FeedbackComponent
-  },
-  {
-    path:'',
-    component:HappeningsComponent,
-    pathMatch:'full'
-  },
-  {
-    path: '**',
-    component: NotFoundComponent
-  }
-];
-*/
 
 @NgModule({
   declarations: [

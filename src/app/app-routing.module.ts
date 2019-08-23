@@ -16,7 +16,8 @@ const routes: Routes = [
   { path: 'detail/:id', component: HappeningDetailComponent },
   { path: 'happeningplaces/byId/:id', component: HappeningPlaceDetailFormComponent},
   { path: '', component: HappeningsComponent, pathMatch: 'full' },
-  { path: '**', component: NotFoundComponent  },
+  { path: 'user', loadChildren: './user/user.module#UserModule' },
+  { path: '**', component: NotFoundComponent},
 ];
 
 @NgModule({
