@@ -16,6 +16,7 @@ import { HappeningSearchComponent } from './happenings/happening-search/happenin
 import { HappeningPlaceComponent } from './happening-place/happening-place.component';
 import { HappeningPlaceDetailComponent } from './happening-place/happening-place-detail/happening-place-detail.component';
 import { HappeningPlaceDetailFormComponent } from './happening-place/happening-place-detail-form/happening-place-detail-form.component';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { HappeningPlaceDetailFormComponent } from './happening-place/happening-p
     HappeningSearchComponent,
     HappeningPlaceComponent,
     HappeningPlaceDetailComponent,
-    HappeningPlaceDetailFormComponent
+    HappeningPlaceDetailFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +40,9 @@ import { HappeningPlaceDetailFormComponent } from './happening-place/happening-p
     FormsModule,
     RouterModule
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
