@@ -7,7 +7,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { HappeningsComponent } from './happenings/happenings.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import {Router, RouterModule, Routes} from '@angular/router';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { HappeningDetailComponent } from './happenings/happening-detail/happening-detail.component';
 import { MessagesComponent } from './messages/messages.component';
@@ -38,6 +38,7 @@ import { AuthService } from './services/auth.service';
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule
   ],
   providers: [

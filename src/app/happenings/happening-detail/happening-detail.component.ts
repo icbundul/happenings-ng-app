@@ -48,8 +48,9 @@ export class HappeningDetailComponent implements OnInit {
   cancel(): void {
   }
 
-  save(): void {
-    this.happeningService.updateHappening(this.happening)
+  save(formValues): void {
+    console.log(formValues);
+    this.happeningService.updateHappening(formValues)
       .subscribe(() => this.goBack());
   }
 
