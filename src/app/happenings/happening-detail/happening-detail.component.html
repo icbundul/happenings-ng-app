@@ -1,3 +1,4 @@
+<div>
 <div *ngIf="happening">
 
   <h1>New Happening</h1>
@@ -8,7 +9,7 @@
            [ngClass]="{'error': newHappeningForm.controls.name?.invalid && newHappeningForm.controls.name?.touched}">
         <label for="happeningName">Happening name:</label>
         <em *ngIf="newHappeningForm.controls.name?.invalid && (newHappeningForm.controls.name?.touched)">Required</em>
-        <input (ngModel)="happening.name" name="name" required id="happeningName" type="text" class="form-control"
+        <input [(ngModel)]="happening.name" name="name" required id="happeningName" type="text" class="form-control"
                placeholder="name of your happening..."/>
       </div>
 
@@ -16,32 +17,36 @@
       <div class="row">
         <div class="col-md-6" [ngClass]="{'error': newHappeningForm.controls.dateFrom?.invalid && newHappeningForm.controls.dateFrom?.touched}">
           <em *ngIf="newHappeningForm.controls.dateFrom?.invalid && (newHappeningForm.controls.dateFrom?.touched)">Required</em>
-          <input (ngModel)="happening.dateFrom" name="dateFrom" required id="happeningDateFrom" type="text"
+          <input [(ngModel)]="happening.dateFrom" name="dateFrom" required id="happeningDateFrom" type="text"
                  class="form-control" placeholder="date from format (dd.MM.yyyy)...."/>
         </div>
         <div class="col-md-6" [ngClass]="{'error': newHappeningForm.controls.dateTo?.invalid && newHappeningForm.controls.dateTo?.touched}">
           <em
             *ngIf="newHappeningForm.controls.dateTo?.invalid && (newHappeningForm.controls.dateTo?.touched)">Required</em>
-          <input (ngModel)="happening.dateTo" name="dateTo" required id="dateTo" type="text" class="form-control"
+          <input [(ngModel)]="happening.dateTo" name="dateTo" required id="dateTo" type="text" class="form-control"
                  placeholder="date to format (dd.MM.yyyy)...."/>
         </div>
       </div>
 
-      <div class="form-group">
+      <div class="form-group" [ngClass]="{'error': newHappeningForm.controls.text?.invalid && newHappeningForm.controls.text?.touched}">
+        <em
+          *ngIf="newHappeningForm.controls.text?.invalid && (newHappeningForm.controls.text?.touched)">Required</em>
         <label for="happeningText">Text:</label>
-        <input (ngModel)="happening.text" name="text" id="happeningText" type="text" class="form-control"
+        <input [(ngModel)]="happening.text" name="text" required id="happeningText" type="text" class="form-control"
                placeholder="description of happening..."/>
       </div>
-      <div class="form-group">
+      <div class="form-group" [ngClass]="{'error': newHappeningForm.controls.textHr?.invalid && newHappeningForm.controls.textHr?.touched}">
+        <em
+          *ngIf="newHappeningForm.controls.textHr?.invalid && (newHappeningForm.controls.textHr?.touched)">Required</em>
         <label for="happeningTextHr">Text Hr:</label>
-        <input (ngModel)="happening.textHr" name="textHr" id="happeningTextHr" type="text" class="form-control"
+        <input [(ngModel)]="happening.textHr" name="textHr" required id="happeningTextHr" type="text" class="form-control"
                placeholder="description of happening on hr..."/>
       </div>
 
       <div class="form-group">
         <label for="happeningNotes">Notes:</label>
-        <input (ngModel)="happening.notes" name="notes" id="happeningNotes" type="text" class="form-control"
-               placeholder="notes..."/>
+        <textarea [(ngModel)]="happening.notes" name="notes" id="happeningNotes" type="text" class="form-control"
+                  placeholder="notes..."></textarea>
       </div>
 
       <!--<div class="form-group">
@@ -61,8 +66,6 @@
       </button>
       <button type="button" class="btn btn-default" (click)="goBack()">Go back</button>
     </form>
-  </div>
-
 
   <!--<h2>{{happening.name | uppercase}} Details</h2>
   <div><span>id: </span>{{happening.id}}</div>
@@ -77,8 +80,9 @@
   <button type="submit" class="btn btn-primary" (click)="save()">Save</button>
   <button type="button" class="btn btn-default" (click)="happening={ };">Cancel</button>
   <button type="button" class="btn btn-default" (click)="goBack()">Go back</button>-->
-  <hr/>
-
+</div>
+  <div class="col-md-6">
+    <hr/>
   <app-happening-place-detail #happeningPlaceDetail [happening]="happening"
                               (happeningPlaceAdd)="addHappeningPlace($event)">
   </app-happening-place-detail>
@@ -86,12 +90,15 @@
   <!--<button class="btn btn-primary" (click)="happeningPlaceDetail.testMethod()">Test</button>-->
 
   <hr/>
+  </div>
 
+  <div class="col-md-6">
   <app-happening-place *ngFor="let n of happeningPlaces"
                        [happeningPlace]="n"
                        (happeningPlaceDeleted)="deleteHappeningPlace($event)"
                        (click)="onSelectHappeningPlace(n)">
   </app-happening-place>
+</div>
 </div>
 
 

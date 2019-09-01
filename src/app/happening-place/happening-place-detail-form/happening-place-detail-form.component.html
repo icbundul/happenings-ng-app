@@ -1,26 +1,51 @@
-<div>
-  <!--TODO Add image tables later on in backend-->
-  <!--<img [src]="happeningPlace?.imageUrl" [alt]="happeningPlace?.name">-->
+<div class="col-md-12">
+  <h3>Create Happening Place</h3>
+</div>
+<div class="col-md-6">
+  <form [formGroup]="newHappeningPlaceForm" (ngSubmit)="save(newHappeningPlaceForm.value)" autocomplete="off">
 
-  <div class="row">
-    <div class="col-md-11">
-      <h2>{{happeningPlace?.placeName}} </h2>
+    <div class="form-group" [ngClass]="{'error': placeName.invalid && placeName.dirty}">
+      <label for="placeName">Place Name:</label>
+      <em *ngIf="placeName.invalid && placeName.dirty">Required</em>
+      <input formControlName="placeName" id="placeName" type="text" class="form-control" placeholder="place name..." />
     </div>
-  </div>
 
-  <div class="row">
-    <div class="col-md-6">
-      <div><strong>Created by:</strong> {{happeningPlace?.createdBy}}</div>
-      <div><strong>Created datetime:</strong> {{happeningPlace?.createdDatetime}}</div>
-      <div><strong>Date from:</strong> {{happeningPlace?.dateFrom}}</div>
-      <div><strong>Date to:</strong> {{happeningPlace?.dateFrom}}</div>
+    <div class="form-group" [ngClass]="{'error': address.invalid && address.dirty}">
+      <label for="address">Address:</label>
+      <em *ngIf="address.invalid && address.dirty">Required</em>
+      <input formControlName="address" id="address" type="text" class="form-control" placeholder="place adress..." />
     </div>
-    <div class="col-md-6">
-      <address>
-        <strong>Notes:</strong><br />
-        {{happeningPlace?.notes}}
-      </address>
+
+    <div class="form-group">
+      <label for="locationX">Location X:</label>
+      <input formControlName="locationX" id="locationX" type="text" class="form-control" placeholder="location X..." />
     </div>
-  </div>
-  <button (click)="goBack()">go back</button>
+
+    <div class="form-group">
+      <label for="locationY">Location Y:</label>
+      <input formControlName="locationY" id="locationY" type="text" class="form-control" placeholder="location Y..." />
+    </div>
+
+    <div class="form-group">
+      <label for="dateFrom">Date/Time it starts:</label>
+      <input formControlName="dateFrom" id="dateFrom" type="text" class="form-control" placeholder="date and time it starts..." />
+    </div>
+
+    <div class="form-group">
+      <label for="dateTo">Date/Time it ends:</label>
+      <input formControlName="dateTo" id="dateTo" type="text" class="form-control" placeholder="date and time it ends..." />
+    </div>
+
+    <div class="form-group" [ngClass]="{'error': notes.invalid && notes.dirty}">
+      <label for="notes">Notes:</label>
+      <em *ngIf="notes.invalid && notes.dirty && notes?.errors.required">Required</em>
+      <em *ngIf="notes.invalid && notes.dirty && notes?.errors.maxLength">Exceed 400 caracters</em>
+      <em *ngIf="notes.invalid && notes.dirty && notes?.errors.restrictedWords">Restricted words found: {{notes.errors.restrictedWords}}</em>
+      <textarea formControlName="notes" id="notes" type="text" class="form-control" placeholder="notes..." ></textarea>
+    </div>
+
+
+    <button type="submit" [disabled]="newHappeningPlaceForm.invalid" class="btn btn-primary">Save</button>
+    <button type="button" class="btn btn-default">Cancel</button>
+  </form>
 </div>

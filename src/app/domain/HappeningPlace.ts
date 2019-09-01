@@ -5,7 +5,7 @@ export class HappeningPlace extends BaseEntity {
 
   placeName: string;
 
-  adress: string;
+  address: string;
 
   locationX: number;
 
