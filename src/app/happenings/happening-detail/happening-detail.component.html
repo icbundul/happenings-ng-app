@@ -1,104 +1,116 @@
-<div>
-<div *ngIf="happening">
+<div class="container" *ngIf="happening">
 
-  <h1>New Happening</h1>
-  <hr>
-  <div class="col-md-6">
-    <form #newHappeningForm="ngForm" (ngSubmit)="save(newHappeningForm.value)" autocomplete="off" novalidate>
-      <div class="form-group"
-           [ngClass]="{'error': newHappeningForm.controls.name?.invalid && newHappeningForm.controls.name?.touched}">
-        <label for="happeningName">Happening name:</label>
-        <em *ngIf="newHappeningForm.controls.name?.invalid && (newHappeningForm.controls.name?.touched)">Required</em>
-        <input [(ngModel)]="happening.name" name="name" required id="happeningName" type="text" class="form-control"
-               placeholder="name of your happening..."/>
-      </div>
-
-      <label for="happeningDateFrom">Happening date from - date to:</label>
-      <div class="row">
-        <div class="col-md-6" [ngClass]="{'error': newHappeningForm.controls.dateFrom?.invalid && newHappeningForm.controls.dateFrom?.touched}">
-          <em *ngIf="newHappeningForm.controls.dateFrom?.invalid && (newHappeningForm.controls.dateFrom?.touched)">Required</em>
-          <input [(ngModel)]="happening.dateFrom" name="dateFrom" required id="happeningDateFrom" type="text"
-                 class="form-control" placeholder="date from format (dd.MM.yyyy)...."/>
-        </div>
-        <div class="col-md-6" [ngClass]="{'error': newHappeningForm.controls.dateTo?.invalid && newHappeningForm.controls.dateTo?.touched}">
-          <em
-            *ngIf="newHappeningForm.controls.dateTo?.invalid && (newHappeningForm.controls.dateTo?.touched)">Required</em>
-          <input [(ngModel)]="happening.dateTo" name="dateTo" required id="dateTo" type="text" class="form-control"
-                 placeholder="date to format (dd.MM.yyyy)...."/>
-        </div>
-      </div>
-
-      <div class="form-group" [ngClass]="{'error': newHappeningForm.controls.text?.invalid && newHappeningForm.controls.text?.touched}">
-        <em
-          *ngIf="newHappeningForm.controls.text?.invalid && (newHappeningForm.controls.text?.touched)">Required</em>
-        <label for="happeningText">Text:</label>
-        <input [(ngModel)]="happening.text" name="text" required id="happeningText" type="text" class="form-control"
-               placeholder="description of happening..."/>
-      </div>
-      <div class="form-group" [ngClass]="{'error': newHappeningForm.controls.textHr?.invalid && newHappeningForm.controls.textHr?.touched}">
-        <em
-          *ngIf="newHappeningForm.controls.textHr?.invalid && (newHappeningForm.controls.textHr?.touched)">Required</em>
-        <label for="happeningTextHr">Text Hr:</label>
-        <input [(ngModel)]="happening.textHr" name="textHr" required id="happeningTextHr" type="text" class="form-control"
-               placeholder="description of happening on hr..."/>
-      </div>
-
-      <div class="form-group">
-        <label for="happeningNotes">Notes:</label>
-        <textarea [(ngModel)]="happening.notes" name="notes" id="happeningNotes" type="text" class="form-control"
-                  placeholder="notes..."></textarea>
-      </div>
-
-      <!--<div class="form-group">
-        <label for="onlineUrl">Online Url:</label>
-        <input (ngModel)="onlineUrl" name="onlineUrl" id="onlineUrl" type="text" class="form-control" placeholder="Online Url..." />
-      </div>
-      <div class="form-group" [ngClass]="{'error': newHappeningForm.controls.imageUrl?.invalid && newHappeningForm.controls.imageUrl?.touched}">
-        <label for="imageUrl">Image:</label>
-        <em *ngIf="newHappeningForm.controls.imageUrl?.invalid && newHappeningForm.controls.imageUrl?.touched && newHappeningForm.controls.imageUrl?.errors.required">Required</em>
-        <em *ngIf="newHappeningForm.controls.imageUrl?.invalid && newHappeningForm.controls.imageUrl?.touched  && newHappeningForm.controls.imageUrl?.errors.pattern">Must be a png or jpg url</em>
-        <input (ngModel)="imageUrl" name="imageUrl" required pattern=".*\/.*.(png|jpg)" id="imageUrl" type="text" class="form-control" placeholder="url of image..." />
-        <img [src]="newHappeningForm.controls.imageUrl.value" *ngIf="newHappeningForm.controls.imageUrl?.valid"/>
-      </div>-->
-
-      <button type="submit" class="btn btn-primary">Save</button>
-      <button type="button" [disabled]="newHappeningForm.invalid" class="btn btn-default" (click)="cancel()">Cancel
-      </button>
-      <button type="button" class="btn btn-default" (click)="goBack()">Go back</button>
-    </form>
-
-  <!--<h2>{{happening.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{happening.id}}</div>
-  <div>
-    <label>name:
-      <input [(ngModel)]="happening.name" placeholder="name"/>
-    </label>
+  <div class="row">
+    <div class="col-md-11">
+      <h1>New Happening</h1>
+    </div>
   </div>
-
-  <br/>
-  <br/>
-  <button type="submit" class="btn btn-primary" (click)="save()">Save</button>
-  <button type="button" class="btn btn-default" (click)="happening={ };">Cancel</button>
-  <button type="button" class="btn btn-default" (click)="goBack()">Go back</button>-->
-</div>
-  <div class="col-md-6">
-    <hr/>
-  <app-happening-place-detail #happeningPlaceDetail [happening]="happening"
-                              (happeningPlaceAdd)="addHappeningPlace($event)">
-  </app-happening-place-detail>
-
-  <!--<button class="btn btn-primary" (click)="happeningPlaceDetail.testMethod()">Test</button>-->
 
   <hr/>
+
+  <div class="row">
+    <div class="col-md-6">
+      <form #newHappeningForm="ngForm" (ngSubmit)="save(newHappeningForm.value)" autocomplete="off" novalidate>
+        <div class="form-group"
+             [ngClass]="{'error': newHappeningForm.controls.name?.invalid && newHappeningForm.controls.name?.touched}">
+          <label for="happeningName">Happening name:</label>
+          <em *ngIf="newHappeningForm.controls.name?.invalid && (newHappeningForm.controls.name?.touched)">Required</em>
+          <input [(ngModel)]="happening.name" name="name" required id="happeningName" type="text" class="form-control"
+                 placeholder="name of your happening..."/>
+        </div>
+
+        <label for="happeningDateFrom">Happening date from - date to:</label>
+        <div class="row">
+          <div class="col-md-6"
+               [ngClass]="{'error': newHappeningForm.controls.dateFrom?.invalid && newHappeningForm.controls.dateFrom?.touched}">
+            <em *ngIf="newHappeningForm.controls.dateFrom?.invalid && (newHappeningForm.controls.dateFrom?.touched)">Required</em>
+            <input [(ngModel)]="happening.dateFrom" name="dateFrom" required id="happeningDateFrom" type="text"
+                   class="form-control" placeholder="date from format (dd.MM.yyyy)...."/>
+          </div>
+          <div class="col-md-6"
+               [ngClass]="{'error': newHappeningForm.controls.dateTo?.invalid && newHappeningForm.controls.dateTo?.touched}">
+            <em
+              *ngIf="newHappeningForm.controls.dateTo?.invalid && (newHappeningForm.controls.dateTo?.touched)">Required</em>
+            <input [(ngModel)]="happening.dateTo" name="dateTo" required id="dateTo" type="text" class="form-control"
+                   placeholder="date to format (dd.MM.yyyy)...."/>
+          </div>
+        </div>
+
+        <div class="form-group"
+             [ngClass]="{'error': newHappeningForm.controls.text?.invalid && newHappeningForm.controls.text?.touched}">
+          <em
+            *ngIf="newHappeningForm.controls.text?.invalid && (newHappeningForm.controls.text?.touched)">Required</em>
+          <label for="happeningText">Text:</label>
+          <input [(ngModel)]="happening.text" name="text" required id="happeningText" type="text" class="form-control"
+                 placeholder="description of happening..."/>
+        </div>
+        <div class="form-group"
+             [ngClass]="{'error': newHappeningForm.controls.textHr?.invalid && newHappeningForm.controls.textHr?.touched}">
+          <em
+            *ngIf="newHappeningForm.controls.textHr?.invalid && (newHappeningForm.controls.textHr?.touched)">Required</em>
+          <label for="happeningTextHr">Text Hr:</label>
+          <input [(ngModel)]="happening.textHr" name="textHr" required id="happeningTextHr" type="text"
+                 class="form-control"
+                 placeholder="description of happening on hr..."/>
+        </div>
+
+        <div class="form-group">
+          <label for="happeningNotes">Notes:</label>
+          <textarea [(ngModel)]="happening.notes" name="notes" id="happeningNotes" type="text" class="form-control"
+                    placeholder="notes..."></textarea>
+        </div>
+
+        <!--<div class="form-group">
+          <label for="onlineUrl">Online Url:</label>
+          <input (ngModel)="onlineUrl" name="onlineUrl" id="onlineUrl" type="text" class="form-control" placeholder="Online Url..." />
+        </div>
+        <div class="form-group" [ngClass]="{'error': newHappeningForm.controls.imageUrl?.invalid && newHappeningForm.controls.imageUrl?.touched}">
+          <label for="imageUrl">Image:</label>
+          <em *ngIf="newHappeningForm.controls.imageUrl?.invalid && newHappeningForm.controls.imageUrl?.touched && newHappeningForm.controls.imageUrl?.errors.required">Required</em>
+          <em *ngIf="newHappeningForm.controls.imageUrl?.invalid && newHappeningForm.controls.imageUrl?.touched  && newHappeningForm.controls.imageUrl?.errors.pattern">Must be a png or jpg url</em>
+          <input (ngModel)="imageUrl" name="imageUrl" required pattern=".*\/.*.(png|jpg)" id="imageUrl" type="text" class="form-control" placeholder="url of image..." />
+          <img [src]="newHappeningForm.controls.imageUrl.value" *ngIf="newHappeningForm.controls.imageUrl?.valid"/>
+        </div>-->
+
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" [disabled]="newHappeningForm.invalid" class="btn btn-default" (click)="cancel()">Cancel
+        </button>
+        <button type="button" class="btn btn-default" (click)="goBack()">Go back</button>
+      </form>
+    </div>
+    <!--<h2>{{happening.name | uppercase}} Details</h2>
+    <div><span>id: </span>{{happening.id}}</div>
+    <div>
+      <label>name:
+        <input [(ngModel)]="happening.name" placeholder="name"/>
+      </label>
+    </div>
+
+    <br/>
+    <br/>
+    <button type="submit" class="btn btn-primary" (click)="save()">Save</button>
+    <button type="button" class="btn btn-default" (click)="happening={ };">Cancel</button>
+    <button type="button" class="btn btn-default" (click)="goBack()">Go back</button>-->
+  </div>
+  <div class="container">
+    <div class="row">
+      <hr/>
+      <app-happening-place-detail #happeningPlaceDetail [happening]="happening"
+                                  (happeningPlaceAdd)="addHappeningPlace($event)">
+      </app-happening-place-detail>
+      <!--<button class="btn btn-primary" (click)="happeningPlaceDetail.testMethod()">Test</button>-->
+
+      <hr/>
+
+    </div>
+    <div class="row">
+      <app-happening-place *ngFor="let n of happeningPlaces"
+                           [happeningPlace]="n"
+                           (happeningPlaceDeleted)="deleteHappeningPlace($event)"
+                           (click)="onSelectHappeningPlace(n)">
+      </app-happening-place>
+    </div>
   </div>
 
-  <div class="col-md-6">
-  <app-happening-place *ngFor="let n of happeningPlaces"
-                       [happeningPlace]="n"
-                       (happeningPlaceDeleted)="deleteHappeningPlace($event)"
-                       (click)="onSelectHappeningPlace(n)">
-  </app-happening-place>
-</div>
-</div>
 
 

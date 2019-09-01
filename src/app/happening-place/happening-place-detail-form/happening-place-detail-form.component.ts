@@ -39,7 +39,7 @@ export class HappeningPlaceDetailFormComponent implements OnInit {
     this.dateFrom = new FormControl('', Validators.required);
     this.dateTo = new FormControl('', Validators.required);
     this.notes = new FormControl('', [Validators.required, Validators.maxLength(400),
-      restrictedWords(['foo', 'bar'])]);
+      restrictedWords(['foo', 'bar', 'jebiga'])]);
 
     this.newHappeningPlaceForm = new FormGroup({
       placeName: this.placeName,
