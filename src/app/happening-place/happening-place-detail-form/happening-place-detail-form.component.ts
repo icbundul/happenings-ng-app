@@ -29,8 +29,9 @@ export class HappeningPlaceDetailFormComponent implements OnInit {
 
   ngOnInit() {
 
-    // this.happeningPlaceService.getHappeningPlaceById(+this.route.snapshot.params['id'])
-    //  .subscribe(happeningPlace => this.happeningPlace = happeningPlace);
+     this.happeningPlaceService.getHappeningPlaceById(+this.route.snapshot.params['id'])
+      .subscribe(happeningPlace => this.happeningPlace = happeningPlace);
+
 
     this.placeName = new FormControl('', Validators.required);
     this.address = new FormControl('', Validators.required);
@@ -75,6 +76,10 @@ export class HappeningPlaceDetailFormComponent implements OnInit {
   }
 
   goBack(): void {
+    this.location.back();
+  }
+
+  cancel(): void {
     this.location.back();
   }
 

@@ -17,6 +17,7 @@ import { HappeningPlaceComponent } from './happening-place/happening-place.compo
 import { HappeningPlaceDetailComponent } from './happening-place/happening-place-detail/happening-place-detail.component';
 import { HappeningPlaceDetailFormComponent } from './happening-place/happening-place-detail-form/happening-place-detail-form.component';
 import { AuthService } from './services/auth.service';
+import { CollapsibleWellComponent } from './common/collapsible-well/collapsible-well.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { AuthService } from './services/auth.service';
     HappeningPlaceComponent,
     HappeningPlaceDetailComponent,
     HappeningPlaceDetailFormComponent,
+    CollapsibleWellComponent,
   ],
   imports: [
     BrowserModule,

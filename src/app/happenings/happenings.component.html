@@ -2,7 +2,7 @@
 
 <div>
   <label>Happening name:
-    <input #happeningName />
+    <input #happeningName/>
   </label>
   <!-- (click) passes input value to add() and then clears the input -->
   <button (click)="add(happeningName.value); happeningName.value=''">
@@ -10,26 +10,39 @@
   </button>
 </div>
 
-<hr />
+<hr/>
 
-<div class="well hoverwell thumbnail" *ngFor="let happening of happenings">
-  <a routerLink="/detail/{{happening.id}}">
-    <h2>{{happening.name}}</h2>
-  </a>
-    <div><b>Id:</b> {{happening.id}}</div>
-    <div>
-      <span><b>Date created:</b> {{happening.createdDatetime}}</span>
-      <span class="pad-left">{{happening.createdBy}}</span>
-    </div>
-    <div *ngIf="happening?.dateFrom">
-      <b>Date from:</b> {{happening.dateFrom}}
-    </div>
-    <div *ngIf="happening?.dateTo">
-      <b>Date to:</b> {{happening.dateTo}}
-    </div>
-    <br />
-    <div>{{happening.text}}</div>
-    <br />
-    <button class="btn btn-primary" title="delete happening"
-          (click)="delete(happening)">Delete</button>
+<div class="row" *ngFor="let happening of happenings">
+  <div class="col-md-12">
+    <app-collapsible-well>
+      <div well-title>
+        {{happening.name}}
+        <!--Put logic here for happening popularity-->
+        <i class="glyphicon glyphicon-fire" style="color:red"></i>
+      </div>
+      <div well-body>
+        <a routerLink="/detail/{{happening.id}}">
+          <h2>{{happening.name}}</h2>
+        </a>
+        <div><b>Id:</b> {{happening.id}}</div>
+        <div>
+          <span><b>Date created:</b> {{happening.createdDatetime}}</span>
+          <span class="pad-left">{{happening.createdBy}}</span>
+        </div>
+        <div *ngIf="happening?.dateFrom">
+          <b>Date from:</b> {{happening.dateFrom}}
+        </div>
+        <div *ngIf="happening?.dateTo">
+          <b>Date to:</b> {{happening.dateTo}}
+        </div>
+        <br/>
+        <div>{{happening.text}}</div>
+        <br/>
+        <button class="btn btn-primary" title="delete happening"
+                (click)="delete(happening)">Delete
+        </button>
+      </div>
+    </app-collapsible-well>
+  </div>
+
 </div>
