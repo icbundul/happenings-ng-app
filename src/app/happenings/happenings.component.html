@@ -16,7 +16,7 @@
   <div class="col-md-12">
     <app-collapsible-well>
       <div well-title>
-        {{happening.name}}
+        {{happening.name | uppercase}}
         <!--Put logic here for happening popularity-->
         <i class="glyphicon glyphicon-fire" style="color:red"></i>
       </div>
@@ -26,7 +26,8 @@
         </a>
         <div><b>Id:</b> {{happening.id}}</div>
         <div>
-          <span><b>Date created:</b> {{happening.createdDatetime}}</span>
+          <span><b>Date created:</b> {{happening.createdDatetime | date: 'longDate'}}
+             {{happening.createdDatetime | date: 'hh:ss'}}</span>
           <span class="pad-left">{{happening.createdBy}}</span>
         </div>
         <div *ngIf="happening?.dateFrom">
@@ -34,6 +35,9 @@
         </div>
         <div *ngIf="happening?.dateTo">
           <b>Date to:</b> {{happening.dateTo}}
+        </div>
+        <div>
+          <b>Happening type:</b> {{happening.happeningType}}
         </div>
         <br/>
         <div>{{happening.text}}</div>

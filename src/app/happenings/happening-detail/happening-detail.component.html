@@ -59,22 +59,20 @@
         </div>
 
         <div class="form-group">
+          <label for="happeningType">HappeningType:</label>
+          <select class="form-control" [(ngModel)]="happening.happeningType" id="happeningType" name="happeningType">
+            <option value="">select happening type...</option>
+              <option *ngFor="let happeningType of happeningTypes"
+                      [value]="happeningType.id">{{happeningType.name}}
+              </option>
+          </select>
+        </div>
+
+        <div class="form-group">
           <label for="happeningNotes">Notes:</label>
           <textarea [(ngModel)]="happening.notes" name="notes" id="happeningNotes" type="text" class="form-control"
                     placeholder="notes..."></textarea>
         </div>
-
-        <!--<div class="form-group">
-          <label for="onlineUrl">Online Url:</label>
-          <input (ngModel)="onlineUrl" name="onlineUrl" id="onlineUrl" type="text" class="form-control" placeholder="Online Url..." />
-        </div>
-        <div class="form-group" [ngClass]="{'error': newHappeningForm.controls.imageUrl?.invalid && newHappeningForm.controls.imageUrl?.touched}">
-          <label for="imageUrl">Image:</label>
-          <em *ngIf="newHappeningForm.controls.imageUrl?.invalid && newHappeningForm.controls.imageUrl?.touched && newHappeningForm.controls.imageUrl?.errors.required">Required</em>
-          <em *ngIf="newHappeningForm.controls.imageUrl?.invalid && newHappeningForm.controls.imageUrl?.touched  && newHappeningForm.controls.imageUrl?.errors.pattern">Must be a png or jpg url</em>
-          <input (ngModel)="imageUrl" name="imageUrl" required pattern=".*\/.*.(png|jpg)" id="imageUrl" type="text" class="form-control" placeholder="url of image..." />
-          <img [src]="newHappeningForm.controls.imageUrl.value" *ngIf="newHappeningForm.controls.imageUrl?.valid"/>
-        </div>-->
 
         <button type="submit" class="btn btn-primary">Save</button>
         <button type="button" [disabled]="newHappeningForm.invalid" class="btn btn-default" (click)="cancel()">Cancel
@@ -82,19 +80,7 @@
         <button type="button" class="btn btn-default" (click)="goBack()">Go back</button>
       </form>
     </div>
-    <!--<h2>{{happening.name | uppercase}} Details</h2>
-    <div><span>id: </span>{{happening.id}}</div>
-    <div>
-      <label>name:
-        <input [(ngModel)]="happening.name" placeholder="name"/>
-      </label>
-    </div>
 
-    <br/>
-    <br/>
-    <button type="submit" class="btn btn-primary" (click)="save()">Save</button>
-    <button type="button" class="btn btn-default" (click)="happening={ };">Cancel</button>
-    <button type="button" class="btn btn-default" (click)="goBack()">Go back</button>-->
   </div>
   <div class="container">
     <div class="row">

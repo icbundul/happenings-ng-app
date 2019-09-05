@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { HappeningPlace } from '../../domain/HappeningPlace';
 import { HappeningPlaceService } from '../../services/happening-place.service';
+import {HappeningType} from '../../domain/happening-type';
 
 @Component({
   selector: 'app-happening-detail',
@@ -16,6 +17,7 @@ export class HappeningDetailComponent implements OnInit {
   @Input() happening: Happening;
   happeningPlaces: HappeningPlace[];
   selectedHappeningPlace: HappeningPlace;
+  happeningTypes: HappeningType[];
 
   constructor(private route: ActivatedRoute,
               private happeningService: HappeningService,
@@ -25,6 +27,7 @@ export class HappeningDetailComponent implements OnInit {
   ngOnInit() {
     this.getHappening();
     this.getHappeningPlacesByHappeningId();
+    this.getHappeningTypes();
   }
 
   getCurrentHappeningId(): number {
@@ -39,6 +42,11 @@ export class HappeningDetailComponent implements OnInit {
     }
 
     this.happeningService.getHappening(this.getCurrentHappeningId()).subscribe(happening => this.happening = happening);
+  }
+
+  getHappeningTypes(): void {
+    this.happeningService.getHappeningTypes()
+      .subscribe(happeningTypes => this.happeningTypes = happeningTypes);
   }
 
   goBack(): void {

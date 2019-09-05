@@ -19,7 +19,7 @@ export class HappeningsComponent implements OnInit {
     this.getHappenings();
   }
 
-/*  onSelect(happening: Happening) {
+  /*  onSelect(happening: Happening) {
     this.selectedHappening = happening;
   }*/
 

@@ -4,7 +4,7 @@
   <div *ngFor="let happening of happenings" class="col-1-4">
   <a routerLink="/detail/{{happening.id}}">
     <div class="module hero">
-      <h4>{{happening.name}}</h4>
+      <h4>{{happening.name | uppercase}}</h4>
     </div>
   </a>
 </div>

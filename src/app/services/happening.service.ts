@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MainService } from './main-service';
 import { catchError, map, tap } from 'rxjs/operators';
 import {ToastrService} from './toastr.service';
+import {HappeningType} from '../domain/happening-type';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class HappeningService extends MainService {
 
   private ALL_HAPPENINGS_URL = `${this.BASE_URL}/happenings/all`;
   private HAPPENINGS_URL     = `${this.BASE_URL}/happenings/`;
+  private ALL_HAPPENINGTYPES_URL = `${this.BASE_URL}/happenings/allHappeningTypes/`;
 
   constructor(private http: HttpClient,
               private messageService: MessageService,
@@ -27,9 +29,17 @@ export class HappeningService extends MainService {
     return this.http.get<Happening[]>(this.ALL_HAPPENINGS_URL)
       .pipe(
         tap(_ => this.log('fetched happenings')),
-        catchError(this.handleError<Happening[]>('getHeroes', []))
+        catchError(this.handleError<Happening[]>('getHappenings', []))
       );
+  }
 
+  getHappeningTypes(): Observable<HappeningType[]> {
+
+    return this.http.get<HappeningType[]>(this.ALL_HAPPENINGTYPES_URL)
+      .pipe(
+        tap(_ => this.log('fetched all happening types')),
+      catchError(this.handleError<HappeningType[]>('getHappeningTypes', []))
+    );
   }
 
   getHappening(id: number): Observable<Happening> {

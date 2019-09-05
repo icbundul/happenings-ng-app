@@ -11,4 +11,6 @@ export class Happening extends BaseEntity {
   text: string;
 
   textHr: string;
+
+  happeningType: number;
 }
