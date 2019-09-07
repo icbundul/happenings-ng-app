@@ -36,8 +36,8 @@
         <div *ngIf="happening?.dateTo">
           <b>Date to:</b> {{happening.dateTo}}
         </div>
-        <div>
-          <b>Happening type:</b> {{happening.happeningType}}
+        <div *ngIf="happening?.happeningType">
+          <b>Happening type:</b> {{happening.happeningType.name}}
         </div>
         <br/>
         <div>{{happening.text}}</div>
