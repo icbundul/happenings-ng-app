@@ -12,7 +12,27 @@
 
 <hr/>
 
-<div class="row" *ngFor="let happening of happenings">
+<div class="row" style="margin-bottom: 10px">
+
+  <div class="btn-group btn-group-sm" style="margin-right:20px;">
+    <button class="btn btn-default" [class.active]="sortBy==='name'"
+            (click)="quickFilterHappening('name')">By name</button>
+    <button class="btn btn-default" [class.active]="sortBy==='createdDatetime'"
+            (click)="quickFilterHappening('createdDatetime')">By date created</button>
+  </div>
+
+  <div class="btn-group btn-group-sm">
+    <button class="btn btn-default" [class.active]="filterBy === 'all'"
+            (click)="quickFilterHappeningByHappeningTypeName('all')">All</button>
+  </div>
+  <div class="btn-group btn-group-sm" *ngFor="let happeningType of happeningTypes">
+    <button class="btn btn-default" [class.active]="filterBy === happeningType.name"
+              (click)="quickFilterHappeningByHappeningTypeName(happeningType.name)">{{happeningType.name}}</button>
+  </div>
+
+</div>
+
+<div class="row" *ngFor="let happening of visibleHappenings">
   <div class="col-md-12">
     <app-collapsible-well>
       <div well-title>

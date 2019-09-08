@@ -7,6 +7,7 @@ import { MainService } from './main-service';
 import { catchError, map, tap } from 'rxjs/operators';
 import {ToastrService} from './toastr.service';
 import {HappeningType} from '../domain/happening-type';
+import {getTime} from '../shared';
 
 @Injectable({
   providedIn: 'root'
@@ -91,5 +92,19 @@ export class HappeningService extends MainService {
       tap(_ => this.log(`found happening matching "${term}"`)),
       catchError(this.handleError<Happening[]>('searchHappenings', []))
     );
+  }
+
+  compSortByDateAsc (h1: Happening, h2: Happening) {
+     return getTime(h1.createdDatetime) - getTime(h2.createdDatetime);
+  }
+
+  compSortByNameAsc(h1: Happening, h2: Happening) {
+    if (h1.name > h2.name) {
+      return 1;
+    } else if (h1.name === h2.name) {
+      return 0;
+    } else {
+      return -1;
+    }
   }
 }
