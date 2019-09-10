@@ -12,13 +12,13 @@ export class AuthService {
 
   loginUser(userName: string, password: string) {
 
-    //TODO: ADD SERVER RESONSE HERE
+    // TODO: ADD SERVER RESPONSE HERE
     this.currentUser = {
       id: 1,
       userName: userName,
       firstName: 'John',
       lastName: 'Papa'
-    }
+    };
   }
 
   isAuthenticated() {

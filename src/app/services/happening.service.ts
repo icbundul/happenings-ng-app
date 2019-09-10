@@ -1,13 +1,13 @@
-import { Injectable } from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import { Happening } from '../domain/Happening';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './messages.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { MainService } from './main-service';
-import { catchError, map, tap } from 'rxjs/operators';
-import {ToastrService} from './toastr.service';
+import {catchError, tap} from 'rxjs/operators';
 import {HappeningType} from '../domain/happening-type';
 import {getTime} from '../shared';
+import { TOASTR_TOKEN, Toastr } from '../services/toastr.service';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +21,8 @@ export class HappeningService extends MainService {
 
   constructor(private http: HttpClient,
               private messageService: MessageService,
-              private toastrService: ToastrService) {
-    super(http, messageService, toastrService);
+              @Inject(TOASTR_TOKEN) private toastr: Toastr) {
+    super(http, messageService, toastr);
   }
 
   getHappenings(): Observable<Happening[]> {
@@ -56,7 +56,10 @@ export class HappeningService extends MainService {
   /** PUT: update the happening on the server */
   updateHappening (happening: Happening): Observable<any> {
     return this.http.put(this.HAPPENINGS_URL, happening, this.httpOptions).pipe(
-      tap(_ => this.log(`updated happening id=${happening.id}`)),
+      tap(_ => {
+        this.log(`updated happening id=${happening.id}`);
+        this.successLog('Happening');
+      }),
       catchError(this.handleError<any>('updateHappening'))
     );
   }

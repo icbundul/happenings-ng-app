@@ -18,6 +18,9 @@ import { HappeningPlaceDetailComponent } from './happening-place/happening-place
 import { HappeningPlaceDetailFormComponent } from './happening-place/happening-place-detail-form/happening-place-detail-form.component';
 import { AuthService } from './services/auth.service';
 import { CollapsibleWellComponent } from './common/collapsible-well/collapsible-well.component';
+import { TOASTR_TOKEN, Toastr } from './services/toastr.service';
+
+let toastr: Toastr = window['toastr'];
 
 @NgModule({
   declarations: [
@@ -44,7 +47,8 @@ import { CollapsibleWellComponent } from './common/collapsible-well/collapsible-
     RouterModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    { provide: TOASTR_TOKEN, useValue: toastr },
   ],
   bootstrap: [AppComponent]
 })

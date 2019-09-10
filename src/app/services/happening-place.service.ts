@@ -1,12 +1,11 @@
-import { Injectable } from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import { MainService } from './main-service';
 import { HttpClient } from '@angular/common/http';
 import { MessageService } from './messages.service';
 import { HappeningPlace } from '../domain/HappeningPlace';
 import { Observable } from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
-import {ToastrService} from './toastr.service';
-import {Happening} from '../domain/Happening';
+import {Toastr, TOASTR_TOKEN} from './toastr.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +18,8 @@ export class HappeningPlaceService extends MainService {
 
   constructor(private http: HttpClient,
               private messageService: MessageService,
-              private toastrService: ToastrService) {
-    super(http, messageService, toastrService);
+              @Inject(TOASTR_TOKEN) private toastr: Toastr) {
+    super(http, messageService, toastr);
   }
 
   getHappeningPlacesByHappeningId(happeningId: number): Observable<HappeningPlace[]> {
