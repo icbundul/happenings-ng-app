@@ -1,4 +1,5 @@
 import {BaseEntity} from './BaseEntity';
+import {HappeningType} from './happening-type';
 
 export class Happening extends BaseEntity {
 
@@ -12,5 +13,5 @@ export class Happening extends BaseEntity {
 
   textHr: string;
 
-  happeningType: any;
+  happeningType: HappeningType;
 }
