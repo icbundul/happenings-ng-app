@@ -26,7 +26,7 @@
             (click)="quickFilterHappeningByHappeningTypeName('all')">All</button>
   </div>
   <div class="btn-group btn-group-sm" *ngFor="let happeningType of happeningTypes">
-    <button class="btn btn-default" [class.active]="filterBy === happeningType.name"
+    <button class="btn btn-default" [class.active]="filterBy === happeningType"
               (click)="quickFilterHappeningByHappeningTypeName(happeningType.name)">{{happeningType.name}}</button>
   </div>
 

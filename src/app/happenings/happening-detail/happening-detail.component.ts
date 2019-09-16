@@ -14,15 +14,17 @@ import {HappeningType} from '../../domain/happening-type';
 })
 export class HappeningDetailComponent implements OnInit {
 
+  constructor(private route: ActivatedRoute,
+              private happeningService: HappeningService,
+              private happeningPlaceService: HappeningPlaceService,
+              private location: Location) { }
+
   @Input() happening: Happening;
   happeningPlaces: HappeningPlace[];
   selectedHappeningPlace: HappeningPlace;
   happeningTypes: HappeningType[];
 
-  constructor(private route: ActivatedRoute,
-              private happeningService: HappeningService,
-              private happeningPlaceService: HappeningPlaceService,
-              private location: Location) { }
+  compareFn = this._compareFn.bind(this);
 
   ngOnInit() {
     this.getHappening();
@@ -59,7 +61,7 @@ export class HappeningDetailComponent implements OnInit {
   save(formValues): void {
     console.log(formValues);
     this.happeningService.updateHappening(formValues)
-      .subscribe(() => this.goBack());
+      .subscribe();
   }
 
   // ------ HappeningPlace related
@@ -94,6 +96,10 @@ export class HappeningDetailComponent implements OnInit {
       });
 
       this.getHappeningPlacesByHappeningId();
+  }
+
+  _compareFn(a, b) {
+    return a.id === b.id;
   }
 
 }

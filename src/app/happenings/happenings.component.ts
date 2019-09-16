@@ -69,11 +69,14 @@ export class HappeningsComponent implements OnInit {
       this.visibleHappenings = this.happenings.slice(0);
       this.filterBy = 'all';
     } else {
-      this.happeningType = this.happeningTypes.filter(happeningType =>
-        happeningType.name === happeningTypeName)[0];
+      this.happeningType = this.happeningTypes
+        .filter(happeningType =>
+          happeningType.name === happeningTypeName)[0];
 
-      this.visibleHappenings = this.happenings.filter(x => {
-        return x.happeningType.id === this.happeningType.id;
+      this.visibleHappenings = this.happenings
+        .filter(x => x.happeningType !== null)
+        .filter(x => {
+          return x.happeningType.id === this.happeningType.id;
       });
       this.filterBy = this.happeningType.name;
     }
