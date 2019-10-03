@@ -1,9 +1,11 @@
-<div>
-  <label>Happening place:
-    <input [(ngModel)]="happeningPlace.placeName" placeholder="name"/>
-  </label>
-  <!-- (click) passes input value to add() and then clears the input -->
-  <button (click)="addHappeningPlaceFromChild(happeningPlace); happeningPlace={ }">
-    add
-  </button>
+<div class="row">
+    <div class="col-md-4">
+      <label>Happening place:
+        <input class="form-control" [(ngModel)]="happeningPlace.placeName" placeholder="name"/>
+      </label>
+      <!-- (click) passes input value to add() and then clears the input -->
+      <button type="submit" class="btn btn-primary" (click)="addHappeningPlaceFromChild(happeningPlace); happeningPlace={ }">
+        add
+      </button>
+  </div>
 </div>

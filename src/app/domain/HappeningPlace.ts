@@ -15,7 +15,9 @@ export class HappeningPlace extends BaseEntity {
 
   dateTo: Date;
 
-  orderNumber: number;
+  orderNumber?: number;
 
-  happening: Happening;
+  happening?: Happening;
+
+  happeningId?: number;
 }

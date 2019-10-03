@@ -1,4 +1,5 @@
-<div class="well">
+<div *ngFor="let happeningPlace of happeningPlaces" class = "well">
+
   <a [routerLink]="['/happeningplaces/byId/', happeningPlace.id]">
     <h2>{{happeningPlace.placeName}}</h2>
  </a>
@@ -10,5 +11,4 @@
   <button class="btn btn-primary" title="Delete Happening place"
           (click)="deleteHappeningPlace(happeningPlace)">Delete</button>
 </div>
-
 

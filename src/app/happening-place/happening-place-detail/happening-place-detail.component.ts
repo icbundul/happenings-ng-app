@@ -19,11 +19,12 @@ export class HappeningPlaceDetailComponent implements OnInit {
     if (this.happeningPlace == null) {
       this.happeningPlace = new HappeningPlace();
     }
-    this.happeningPlace.happening = this.happening;
+    this.happeningPlace.happeningId = this.happening.id;
   }
 
   addHappeningPlaceFromChild(happeningPlace: HappeningPlace): void {
-    happeningPlace.happening = this.happening;
+    happeningPlace.happeningId = this.happening.id;
+    this.happening.happeningPlaces.push(happeningPlace);
     this.happeningPlaceAdd.emit(happeningPlace);
   }
 

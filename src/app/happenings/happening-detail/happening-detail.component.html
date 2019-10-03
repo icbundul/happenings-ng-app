@@ -59,7 +59,7 @@
         </div>
 
         <div class="form-group">
-          <label for="happeningType">HappeningType:</label>
+          <label for="happeningType">Happening type:</label>
 
           <select class="form-control" [compareWith]="compareFn" [(ngModel)]="happening.happeningType" id="happeningType" name="happeningType">
             <option [value]="{}">select happening type...</option>
@@ -89,14 +89,14 @@
       <app-happening-place-detail #happeningPlaceDetail [happening]="happening"
                                   (happeningPlaceAdd)="addHappeningPlace($event)">
       </app-happening-place-detail>
+      <button type="button" class="btn btn-default" (click)="goBack()">Go back</button>
       <!--<button class="btn btn-primary" (click)="happeningPlaceDetail.testMethod()">Test</button>-->
 
       <hr/>
 
     </div>
     <div class="row">
-      <app-happening-place *ngFor="let n of happeningPlaces"
-                           [happeningPlace]="n"
+      <app-happening-place [happeningPlaces]="happening.happeningPlaces"
                            (happeningPlaceDeleted)="deleteHappeningPlace($event)"
                            (click)="onSelectHappeningPlace(n)">
       </app-happening-place>

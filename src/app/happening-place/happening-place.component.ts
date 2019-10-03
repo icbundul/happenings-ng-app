@@ -8,7 +8,8 @@ import { HappeningPlace } from '../domain/HappeningPlace';
 })
 export class HappeningPlaceComponent implements OnInit {
 
-  @Input() happeningPlace: HappeningPlace;
+  @Input() happeningPlaces: HappeningPlace[];
+  happeningPlace: HappeningPlace;
   @Output() happeningPlaceDeleted: EventEmitter<HappeningPlace> = new EventEmitter<HappeningPlace>();
   @Output() happeningPlaceSelected: EventEmitter<HappeningPlace> = new EventEmitter<HappeningPlace>();
 

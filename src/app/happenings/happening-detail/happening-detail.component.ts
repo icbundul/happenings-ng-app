@@ -6,30 +6,36 @@ import { Location } from '@angular/common';
 import { HappeningPlace } from '../../domain/HappeningPlace';
 import { HappeningPlaceService } from '../../services/happening-place.service';
 import {HappeningType} from '../../domain/happening-type';
+import {BaseEntity} from '../../domain/BaseEntity';
+import {MainComponent} from '../../shared/main-component';
 
 @Component({
   selector: 'app-happening-detail',
   templateUrl: './happening-detail.component.html',
   styleUrls: ['./happening-detail.component.css']
 })
-export class HappeningDetailComponent implements OnInit {
+export class HappeningDetailComponent extends MainComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private happeningService: HappeningService,
               private happeningPlaceService: HappeningPlaceService,
-              private location: Location) { }
+              private location: Location) {
+    super();
+  }
 
-  @Input() happening: Happening;
+  happening: Happening;
   happeningPlaces: HappeningPlace[];
   selectedHappeningPlace: HappeningPlace;
   happeningTypes: HappeningType[];
 
-  compareFn = this._compareFn.bind(this);
+  // compareFn = this._compareFn.bind(this);
 
   ngOnInit() {
-    this.getHappening();
-    this.getHappeningPlacesByHappeningId();
+
     this.getHappeningTypes();
+    this.getHappening();
+    // this.getHappeningPlacesByHappeningId();
+
   }
 
   getCurrentHappeningId(): number {
@@ -38,12 +44,9 @@ export class HappeningDetailComponent implements OnInit {
 
   getHappening(): void {
 
-    if (this.getCurrentHappeningId() === 0) {
-      this.happening = new Happening();
-      return;
-    }
-
-    this.happeningService.getHappening(this.getCurrentHappeningId()).subscribe(happening => this.happening = happening);
+    this.happeningService.getHappening(this.getCurrentHappeningId()).subscribe(
+      happening => { this.happening = happening;
+        console.log(this.happening); });
   }
 
   getHappeningTypes(): void {
@@ -59,8 +62,25 @@ export class HappeningDetailComponent implements OnInit {
   }
 
   save(formValues): void {
-    console.log(formValues);
-    this.happeningService.updateHappening(formValues)
+
+    const happeningForSave =  formValues;
+
+    happeningForSave.happeningPlaces = Object.assign([], this.happening.happeningPlaces);
+
+   /* happeningForSave.happeningPlaces(function (value) {
+      value.happening = this.happening;
+    });*/
+
+    /*for (let happeningPlace of this.happening.happeningPlaces) {
+      happeningPlace.happening = this.happening;
+      happeningForSave.happeningPlaces.push(happeningPlace);
+    }*/
+
+   /*happeningForSave.happeningPlaces.map(function(happeningPlace) {
+        return happeningPlace;
+    });*/
+
+    this.happeningService.updateHappening(happeningForSave)
       .subscribe();
   }
 
@@ -84,7 +104,7 @@ export class HappeningDetailComponent implements OnInit {
 
   addHappeningPlace(happeningPlace: HappeningPlace): void {
 
-    this.happeningPlaceService.addHappeningPlace(happeningPlace)
+    /*this.happeningPlaceService.addHappeningPlace(happeningPlace)
       .subscribe(res => {
 
         if (happeningPlace.id != null) {
@@ -93,13 +113,22 @@ export class HappeningDetailComponent implements OnInit {
         } else {
           this.happeningPlaces.push(happeningPlace);
         }
-      });
+      });*/
 
-      this.getHappeningPlacesByHappeningId();
+    if (happeningPlace.id != null) {
+      const itemIndex = this.happening.happeningPlaces.findIndex(hp => hp.id === happeningPlace.id);
+      this.happening.happeningPlaces[itemIndex] = happeningPlace;
+    }
+
+    this.happeningPlaces = this.happening.happeningPlaces;
   }
 
-  _compareFn(a, b) {
+ /* _compareFn(a, b) {
     return a.id === b.id;
   }
+
+/*  compareFn(be1: BaseEntity, be2: BaseEntity): boolean {
+    return be1 && be2 ? be1.id === be2.id : be1 === be2;
+  }*/
 
 }
