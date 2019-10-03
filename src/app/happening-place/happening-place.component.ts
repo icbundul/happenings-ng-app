@@ -9,7 +9,7 @@ import { HappeningPlace } from '../domain/HappeningPlace';
 export class HappeningPlaceComponent implements OnInit {
 
   @Input() happeningPlaces: HappeningPlace[];
-  happeningPlace: HappeningPlace;
+  // happeningPlace: HappeningPlace;
   @Output() happeningPlaceDeleted: EventEmitter<HappeningPlace> = new EventEmitter<HappeningPlace>();
   @Output() happeningPlaceSelected: EventEmitter<HappeningPlace> = new EventEmitter<HappeningPlace>();
 
@@ -19,12 +19,12 @@ export class HappeningPlaceComponent implements OnInit {
   ngOnInit() {
   }
 
-  deleteHappeningPlace(): void {
-    this.happeningPlaceDeleted.emit(this.happeningPlace);
+  deleteHappeningPlace(happeningPlace : HappeningPlace): void {
+    this.happeningPlaceDeleted.emit(happeningPlace);
   }
 
-  selectHappeningPlace(): void {
-    this.happeningPlaceSelected.emit(this.happeningPlace);
+  selectHappeningPlace(happeningPlace: HappeningPlace): void {
+    this.happeningPlaceSelected.emit(happeningPlace);
   }
 
 }

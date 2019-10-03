@@ -28,14 +28,10 @@ export class HappeningDetailComponent extends MainComponent implements OnInit {
   selectedHappeningPlace: HappeningPlace;
   happeningTypes: HappeningType[];
 
-  // compareFn = this._compareFn.bind(this);
-
   ngOnInit() {
 
     this.getHappeningTypes();
     this.getHappening();
-    // this.getHappeningPlacesByHappeningId();
-
   }
 
   getCurrentHappeningId(): number {
@@ -67,19 +63,6 @@ export class HappeningDetailComponent extends MainComponent implements OnInit {
 
     happeningForSave.happeningPlaces = Object.assign([], this.happening.happeningPlaces);
 
-   /* happeningForSave.happeningPlaces(function (value) {
-      value.happening = this.happening;
-    });*/
-
-    /*for (let happeningPlace of this.happening.happeningPlaces) {
-      happeningPlace.happening = this.happening;
-      happeningForSave.happeningPlaces.push(happeningPlace);
-    }*/
-
-   /*happeningForSave.happeningPlaces.map(function(happeningPlace) {
-        return happeningPlace;
-    });*/
-
     this.happeningService.updateHappening(happeningForSave)
       .subscribe();
   }
@@ -88,8 +71,8 @@ export class HappeningDetailComponent extends MainComponent implements OnInit {
 
   deleteHappeningPlace(happeningPlace: HappeningPlace): void {
 
-    this.happeningPlaces = this.happeningPlaces.filter(hp => hp.id !== happeningPlace.id);
-    this.happeningPlaceService.deleteHappeningPlace(happeningPlace.id).subscribe();
+    this.happening.happeningPlaces = this.happening.happeningPlaces.filter(hp => hp.id !== happeningPlace.id);
+    // this.happeningPlaceService.deleteHappeningPlace(happeningPlace.id).subscribe();
   }
 
   getHappeningPlacesByHappeningId(): void {
@@ -104,17 +87,6 @@ export class HappeningDetailComponent extends MainComponent implements OnInit {
 
   addHappeningPlace(happeningPlace: HappeningPlace): void {
 
-    /*this.happeningPlaceService.addHappeningPlace(happeningPlace)
-      .subscribe(res => {
-
-        if (happeningPlace.id != null) {
-          const itemIndex = this.happeningPlaces.findIndex(hp => hp.id === happeningPlace.id);
-          this.happeningPlaces[itemIndex] = happeningPlace;
-        } else {
-          this.happeningPlaces.push(happeningPlace);
-        }
-      });*/
-
     if (happeningPlace.id != null) {
       const itemIndex = this.happening.happeningPlaces.findIndex(hp => hp.id === happeningPlace.id);
       this.happening.happeningPlaces[itemIndex] = happeningPlace;
@@ -122,13 +94,4 @@ export class HappeningDetailComponent extends MainComponent implements OnInit {
 
     this.happeningPlaces = this.happening.happeningPlaces;
   }
-
- /* _compareFn(a, b) {
-    return a.id === b.id;
-  }
-
-/*  compareFn(be1: BaseEntity, be2: BaseEntity): boolean {
-    return be1 && be2 ? be1.id === be2.id : be1 === be2;
-  }*/
-
 }

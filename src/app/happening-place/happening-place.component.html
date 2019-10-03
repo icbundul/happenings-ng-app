@@ -2,10 +2,13 @@
 
   <a [routerLink]="['/happeningplaces/byId/', happeningPlace.id]">
     <h2>{{happeningPlace.placeName}}</h2>
- </a>
+  </a>
   <div>{{happeningPlace.adress}}</div>
   <div>
-    <span><b>Adress:</b> {{happeningPlace.adress}}</span>
+    <span><b>Created by:</b> {{happeningPlace.createdDatetime}}</span><br />
+    <span><b>Adress:</b> {{happeningPlace.adress}}</span><br />
+    <span><b>Date:</b> {{happeningPlace.dateFrom}} - {{happeningPlace.dateTo}}</span><br />
+    <span><b>Notes:</b> {{happeningPlace.notes}}</span><br />
   </div>
   <br />
   <button class="btn btn-primary" title="Delete Happening place"

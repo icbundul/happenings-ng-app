@@ -12,6 +12,7 @@
     <div class="col-md-6">
       <form #newHappeningForm="ngForm" (ngSubmit)="save(newHappeningForm.value)" autocomplete="off" novalidate>
         <div class="form-group">
+          <label>ID: {{happening.id}}</label>
           <input type="hidden" [ngModel]="happening.id" name="id">
         </div>
 
@@ -19,7 +20,7 @@
              [ngClass]="{'error': newHappeningForm.controls.name?.invalid && newHappeningForm.controls.name?.touched}">
           <label for="happeningName">Happening name:</label>
           <em *ngIf="newHappeningForm.controls.name?.invalid && (newHappeningForm.controls.name?.touched)">Required</em>
-          <input [(ngModel)]="happening.name" name="name" required id="happeningName" type="text" class="form-control"
+          <input [(ngModel)]="happening.name"  name="name" required id="happeningName" type="text" class="form-control"
                  placeholder="name of your happening..."/>
         </div>
 
@@ -28,14 +29,14 @@
           <div class="col-md-6"
                [ngClass]="{'error': newHappeningForm.controls.dateFrom?.invalid && newHappeningForm.controls.dateFrom?.touched}">
             <em *ngIf="newHappeningForm.controls.dateFrom?.invalid && (newHappeningForm.controls.dateFrom?.touched)">Required</em>
-            <input [(ngModel)]="happening.dateFrom" name="dateFrom" required id="happeningDateFrom" type="text"
+            <input [(ngModel)]="happening.dateFrom" name="dateFrom" required id="happeningDateFrom" type="date"
                    class="form-control" placeholder="date from format (dd.MM.yyyy)...."/>
           </div>
           <div class="col-md-6"
                [ngClass]="{'error': newHappeningForm.controls.dateTo?.invalid && newHappeningForm.controls.dateTo?.touched}">
             <em
               *ngIf="newHappeningForm.controls.dateTo?.invalid && (newHappeningForm.controls.dateTo?.touched)">Required</em>
-            <input [(ngModel)]="happening.dateTo" name="dateTo" required id="dateTo" type="text" class="form-control"
+            <input [(ngModel)]="happening.dateTo" name="dateTo" required id="dateTo" type="date" class="form-control"
                    placeholder="date to format (dd.MM.yyyy)...."/>
           </div>
         </div>
