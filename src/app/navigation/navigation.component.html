@@ -33,9 +33,9 @@
           </li>
         </ul>
       </div>
-      <form id="searchForm"  class="navbar-form navbar-right"  >
+      <form id="searchForm" (ngSubmit)="searchObjects(searchTerm)" class="navbar-form navbar-right"  >
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search Sessions" >
+          <input [(ngModel)]="searchTerm" name="searchTerm" type="text" class="form-control" placeholder="Search Sessions" >
         </div>
         <button class="btn btn-default" >
           Search
@@ -44,3 +44,11 @@
     </div>
   </div>
 </div>
+
+<app-simple-modal title = "Match">
+  <div class = "list-group">
+    <a class = "list-group-item" *ngFor="let hp of foundHappeningPlaces" [routerLink]="['/happeningplaces/', hp.id]">
+      {{hp.placeName}}
+    </a>
+  </div>
+</app-simple-modal>

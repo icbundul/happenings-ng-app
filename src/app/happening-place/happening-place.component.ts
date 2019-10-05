@@ -1,12 +1,13 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { HappeningPlace } from '../domain/HappeningPlace';
+import {MainComponent} from '../shared/main-component';
 
 @Component({
   selector: 'app-happening-place',
   templateUrl: './happening-place.component.html',
   styleUrls: ['./happening-place.component.css']
 })
-export class HappeningPlaceComponent implements OnInit {
+export class HappeningPlaceComponent extends MainComponent implements OnInit {
 
   @Input() happeningPlaces: HappeningPlace[];
   // happeningPlace: HappeningPlace;
@@ -14,7 +15,9 @@ export class HappeningPlaceComponent implements OnInit {
   @Output() happeningPlaceSelected: EventEmitter<HappeningPlace> = new EventEmitter<HappeningPlace>();
 
 
-  constructor() { }
+  constructor() {
+    super();
+  }
 
   ngOnInit() {
   }

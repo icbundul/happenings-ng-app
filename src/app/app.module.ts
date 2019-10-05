@@ -18,9 +18,11 @@ import { HappeningPlaceDetailComponent } from './happening-place/happening-place
 import { HappeningPlaceDetailFormComponent } from './happening-place/happening-place-detail-form/happening-place-detail-form.component';
 import { AuthService } from './services/auth.service';
 import { CollapsibleWellComponent } from './common/collapsible-well/collapsible-well.component';
-import { TOASTR_TOKEN, Toastr } from './services/toastr.service';
+import { JQ_TOKEN, TOASTR_TOKEN, Toastr } from './services/index';
+import { SimpleModalComponent } from './common/simple-modal/simple-modal.component';
 
 let toastr: Toastr = window['toastr'];
+let jQuery = window['$'];
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ let toastr: Toastr = window['toastr'];
     HappeningPlaceDetailComponent,
     HappeningPlaceDetailFormComponent,
     CollapsibleWellComponent,
+    SimpleModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +52,7 @@ let toastr: Toastr = window['toastr'];
   providers: [
     AuthService,
     { provide: TOASTR_TOKEN, useValue: toastr },
+    { provide: JQ_TOKEN, useValue: jQuery },
   ],
   bootstrap: [AppComponent]
 })

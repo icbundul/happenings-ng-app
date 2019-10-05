@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'new', component: HappeningDetailComponent },
   { path: 'detail/:id', component: HappeningDetailComponent },
-  { path: 'happeningplaces/byId/:id', component: HappeningPlaceDetailFormComponent},
+  { path: 'happeningplaces/:id', component: HappeningPlaceDetailFormComponent},
   { path: '', component: HappeningsComponent, pathMatch: 'full' },
   { path: 'user', loadChildren: './user/user.module#UserModule' },
   { path: '**', component: NotFoundComponent},

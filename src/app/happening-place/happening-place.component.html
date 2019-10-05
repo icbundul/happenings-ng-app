@@ -1,11 +1,11 @@
 <div *ngFor="let happeningPlace of happeningPlaces" class = "well">
 
-  <a [routerLink]="['/happeningplaces/byId/', happeningPlace.id]">
+  <a [routerLink]="['/happeningplaces/', happeningPlace.id]">
     <h2>{{happeningPlace.placeName}}</h2>
   </a>
   <div>{{happeningPlace.adress}}</div>
   <div>
-    <span><b>Created by:</b> {{happeningPlace.createdDatetime}}</span><br />
+    <span><b>Created by:</b> {{happeningPlace.createdBy}}, {{happeningPlace.createdDatetime | date : 'medium'}}</span><br />
     <span><b>Adress:</b> {{happeningPlace.adress}}</span><br />
     <span><b>Date:</b> {{happeningPlace.dateFrom}} - {{happeningPlace.dateTo}}</span><br />
     <span><b>Notes:</b> {{happeningPlace.notes}}</span><br />

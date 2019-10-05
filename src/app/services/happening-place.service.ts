@@ -3,7 +3,7 @@ import { MainService } from './main-service';
 import { HttpClient } from '@angular/common/http';
 import { MessageService } from './messages.service';
 import { HappeningPlace } from '../domain/HappeningPlace';
-import { Observable } from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
 import {Toastr, TOASTR_TOKEN} from './toastr.service';
 
@@ -14,7 +14,7 @@ export class HappeningPlaceService extends MainService {
 
   private HAPPENING_PLACES_URL = `${this.BASE_URL}/happeningplaces/`;
   private HAPPENING_PLACE_DELETE_URL = `${this.HAPPENING_PLACES_URL}/delete/`;
-  private HAPPENING_PLACE_BYID_URL = `${this.BASE_URL}/happeningplaces/byId/`;
+  private HAPPENING_PLACE_BYID_URL = `${this.BASE_URL}/happeningplaces/`;
 
   constructor(private http: HttpClient,
               private messageService: MessageService,
@@ -57,6 +57,20 @@ export class HappeningPlaceService extends MainService {
     return this.http.get<HappeningPlace>(`${this.HAPPENING_PLACE_BYID_URL}${id}`).pipe(
       tap(_ => this.log(`fetched happeningPlace id=${id}`)),
       catchError(this.handleError<HappeningPlace>(`getHappeningPlaceByid ${id}`))
+    );
+  }
+
+  searchHappeningPlaces(searchTerm: string): Observable<HappeningPlace[]> {
+
+    if (!searchTerm.trim()) {
+      // if not search term, return empty happening array.
+      return of([]);
+    }
+    const urlBySearchTerm = `${this.HAPPENING_PLACES_URL}search?searchTerm=${searchTerm}`;
+
+    return this.http.get<HappeningPlace[]>(urlBySearchTerm).pipe(
+      tap(_ => this.log(`found happening places matching "${urlBySearchTerm}"`)),
+      catchError(this.handleError<HappeningPlace[]>('searchHappeningPlaces', []))
     );
   }
 
