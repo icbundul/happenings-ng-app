@@ -55,6 +55,7 @@ export class HappeningsComponent implements OnInit {
 
     if (confirm('Are you sure you want to delete this happening?')) {
       this.happenings = this.happenings.filter(h => h !== happening);
+      this.visibleHappenings = this.happenings.filter(vh => vh !== happening);
       this.happeningService.deleteHappening(happening).subscribe();
     }
   }
