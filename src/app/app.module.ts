@@ -17,12 +17,11 @@ import { HappeningPlaceComponent } from './happening-place/happening-place.compo
 import { HappeningPlaceDetailComponent } from './happening-place/happening-place-detail/happening-place-detail.component';
 import { HappeningPlaceDetailFormComponent } from './happening-place/happening-place-detail-form/happening-place-detail-form.component';
 import { AuthService } from './services/auth.service';
-import { CollapsibleWellComponent } from './common/collapsible-well/collapsible-well.component';
+import { CollapsibleWellComponent, SimpleModalComponent, ModalTriggerDirective } from './common/index';
 import { JQ_TOKEN, TOASTR_TOKEN, Toastr } from './services/index';
-import { SimpleModalComponent } from './common/simple-modal/simple-modal.component';
 
-let toastr: Toastr = window['toastr'];
-let jQuery = window['$'];
+const toastr: Toastr = window['toastr'];
+const jQuery = window['$'];
 
 @NgModule({
   declarations: [
@@ -40,6 +39,7 @@ let jQuery = window['$'];
     HappeningPlaceDetailFormComponent,
     CollapsibleWellComponent,
     SimpleModalComponent,
+    ModalTriggerDirective,
   ],
   imports: [
     BrowserModule,

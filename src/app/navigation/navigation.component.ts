@@ -19,7 +19,8 @@ export class NavigationComponent implements OnInit {
   }
 
   searchObjects(searchTerm: string) {
-    this.happeningPlaceService.searchHappeningPlaces(searchTerm).subscribe(
+    this.happeningPlaceService.searchHappeningPlaces(searchTerm).subscribe
+    (
       objects => {
       this.foundHappeningPlaces = objects;
       console.log('---------------------------');
