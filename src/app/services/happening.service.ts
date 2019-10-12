@@ -15,10 +15,6 @@ import { TOASTR_TOKEN, Toastr } from '../services/toastr.service';
 
 export class HappeningService extends MainService {
 
-  private ALL_HAPPENINGS_URL = `${this.BASE_URL}/happenings/all`;
-  private HAPPENINGS_URL     = `${this.BASE_URL}/happenings/`;
-  private ALL_HAPPENINGTYPES_URL = `${this.BASE_URL}/happenings/allHappeningTypes/`;
-
   constructor(private http: HttpClient,
               private messageService: MessageService,
               @Inject(TOASTR_TOKEN) private toastr: Toastr) {
@@ -83,7 +79,6 @@ export class HappeningService extends MainService {
     );
   }
 
-  /* GET heroes whose name contains search term */
   searchHappenings(term: string): Observable<Happening[]> {
     if (!term.trim()) {
       // if not search term, return empty happening array.

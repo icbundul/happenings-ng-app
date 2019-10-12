@@ -12,10 +12,6 @@ import {Toastr, TOASTR_TOKEN} from './toastr.service';
 })
 export class HappeningPlaceService extends MainService {
 
-  private HAPPENING_PLACES_URL = `${this.BASE_URL}/happeningplaces/`;
-  private HAPPENING_PLACE_DELETE_URL = `${this.HAPPENING_PLACES_URL}/delete/`;
-  private HAPPENING_PLACE_BYID_URL = `${this.BASE_URL}/happeningplaces/`;
-
   constructor(private http: HttpClient,
               private messageService: MessageService,
               @Inject(TOASTR_TOKEN) private toastr: Toastr) {

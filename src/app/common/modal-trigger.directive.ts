@@ -20,7 +20,4 @@ export class ModalTriggerDirective implements OnInit {
     });
 
   }
-
-
-
 }
