@@ -73,7 +73,7 @@ export class HappeningDetailComponent extends MainComponent implements OnInit {
       .subscribe();
   }
 
-  // ------ HappeningPlace related
+  // ------ HappeningPlace related ------
 
   deleteHappeningPlace(happeningPlace: HappeningPlace): void {
 

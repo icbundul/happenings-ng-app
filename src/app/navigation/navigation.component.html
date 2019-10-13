@@ -45,15 +45,15 @@
   </div>
 </div>
 
-<app-simple-modal modalName="searchModal" title = "Search results">
+<app-simple-modal modalName="searchModal" closeOnBodyClick="true" title = "Search results">
   <div class = "list-group">
-    <h4 *ngIf="foundHappeningPlaces?.length">HAPPENING PLACES</h4>
-    <a class = "list-group-item" *ngFor="let hp of foundHappeningPlaces" [routerLink]="['/happeningplaces', hp.id]">
-      {{hp.placeName}}
-    </a>
     <h4 *ngIf="foundHappenings?.length">HAPPENINGS</h4>
     <a class = "list-group-item" *ngFor="let h of foundHappenings" [routerLink]="['/detail', h.id]">
       {{h.name}}
+    </a>
+    <h4 *ngIf="foundHappeningPlaces?.length">HAPPENING PLACES</h4>
+    <a class = "list-group-item" *ngFor="let hp of foundHappeningPlaces" [routerLink]="['/happeningplaces', hp.id]">
+      {{hp.placeName}}
     </a>
   </div>
 </app-simple-modal>
