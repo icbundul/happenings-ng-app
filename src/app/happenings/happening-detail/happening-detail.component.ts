@@ -1,12 +1,11 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { Happening } from '../../domain/Happening';
 import { HappeningService } from '../../services/happening.service';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Params} from '@angular/router';
 import { Location } from '@angular/common';
 import { HappeningPlace } from '../../domain/HappeningPlace';
 import { HappeningPlaceService } from '../../services/happening-place.service';
 import {HappeningType} from '../../domain/happening-type';
-import {BaseEntity} from '../../domain/BaseEntity';
 import {MainComponent} from '../../shared/main-component';
 
 @Component({
@@ -31,7 +30,10 @@ export class HappeningDetailComponent extends MainComponent implements OnInit {
   ngOnInit() {
 
     this.getHappeningTypes();
-    this.getHappening();
+    // fetch happening by route
+    this.route.params.forEach((params: Params) => {
+      this.getHappeningById(+params['id']);
+    });
   }
 
   getCurrentHappeningId(): number {
@@ -39,8 +41,12 @@ export class HappeningDetailComponent extends MainComponent implements OnInit {
   }
 
   getHappening(): void {
+    this.getHappeningById(this.getCurrentHappeningId());
+  }
 
-    this.happeningService.getHappening(this.getCurrentHappeningId()).subscribe(
+  getHappeningById(id: number): void {
+
+    this.happeningService.getHappening(id).subscribe(
       happening => { this.happening = happening;
         console.log(this.happening); });
   }
