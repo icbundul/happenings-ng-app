@@ -1,6 +1,6 @@
 <div *ngFor="let happeningPlace of happeningPlaces" class = "well">
 
-  <a [routerLink]="['/happeningplaces/', happeningPlace.id]">
+  <a routerLink="/happeningplace/{{happeningPlace.id}}">
     <h2>{{happeningPlace.placeName}}</h2>
   </a>
   <div>{{happeningPlace.adress}}</div>

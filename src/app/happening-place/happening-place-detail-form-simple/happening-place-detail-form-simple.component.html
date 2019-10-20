@@ -1,0 +1,82 @@
+<div class="container" *ngIf="happeningPlace ">
+
+  <div class="row">
+    <div class="col-md-11">
+      <h1>New Happening Place</h1>
+    </div>
+  </div>
+
+  <hr/>
+
+  <div class="row">
+    <div class="col-md-6">
+      <form #newHappeningPlaceForm="ngForm" (ngSubmit)="save(newHappeningPlaceForm.value)" autocomplete="off" novalidate>
+        <div class="form-group">
+          <label>ID: {{happeningPlace.id}}</label>
+          <input type="hidden" [ngModel]="happeningPlace.id" name="id">
+        </div>
+
+        <div class="form-group"
+             [ngClass]="{'error': newHappeningPlaceForm.controls.placeName?.invalid && newHappeningPlaceForm.controls.placeName?.touched}">
+          <label for="happeningPlaceName">Place name:</label>
+          <em *ngIf="newHappeningPlaceForm.controls.placeName?.invalid && (newHappeningPlaceForm.controls.placeName?.touched)">Required</em>
+          <input [(ngModel)]="happeningPlace.placeName"  name="placeName" required id="happeningPlaceName" type="text" class="form-control"
+                 placeholder="name of your happening place..."/>
+        </div>
+
+        <div class="form-group"
+             [ngClass]="{'error': newHappeningPlaceForm.controls.adress?.invalid && newHappeningPlaceForm.controls.adress?.touched}">
+          <label for="happeningPlaceAdress">Adress:</label>
+          <em *ngIf="newHappeningPlaceForm.controls.adresss?.invalid && (newHappeningPlaceForm.controls.adress?.touched)">Required</em>
+          <input [(ngModel)]="happeningPlace.address"  name="adress" required id="happeningPlaceAdress" type="text" class="form-control"
+                 placeholder="adress of your happening place..."/>
+        </div>
+
+        <label for="happeningPlaceLocationY">Location - Latitude, Longitude:</label>
+        <div class="row">
+          <div class="col-md-6"
+               [ngClass]="{'error': newHappeningPlaceForm.controls.locationY?.invalid && newHappeningPlaceForm.controls.locationY?.touched}">
+            <em *ngIf="newHappeningPlaceForm.controls.locationY?.invalid && (newHappeningPlaceForm.controls.locationY?.touched)">Required</em>
+            <input [(ngModel)]="happeningPlace.locationY" name="locationY" required id="happeningPlaceLocationY" type="number"
+                   class="form-control" placeholder="latitude...."/>
+          </div>
+          <div class="col-md-6"
+               [ngClass]="{'error': newHappeningPlaceForm.controls.locationX?.invalid && newHappeningPlaceForm.controls.locationX?.touched}">
+            <em *ngIf="newHappeningPlaceForm.controls.locationX?.invalid && (newHappeningPlaceForm.controls.locationX?.touched)">Required</em>
+            <input [(ngModel)]="happeningPlace.locationX" name="locationY" required id="happeningPlaceLocationX" type="number" class="form-control"
+                   placeholder="longitude...."/>
+          </div>
+        </div>
+
+        <label for="happeningPlaceDateFrom">Date of happening on place date from - date to:</label>
+        <div class="row">
+          <div class="col-md-6"
+               [ngClass]="{'error': newHappeningPlaceForm.controls.dateFrom?.invalid && newHappeningPlaceForm.controls.dateFrom?.touched}">
+            <em *ngIf="newHappeningPlaceForm.controls.dateFrom?.invalid && (newHappeningPlaceForm.controls.dateFrom?.touched)">Required</em>
+            <input [(ngModel)]="happeningPlace.dateFrom" name="dateFrom" required id="happeningPlaceDateFrom" type="datetime-local"
+                   class="form-control" placeholder="date from when happening starts (dd.MM.yyyy HH:MM:SS)...."/>
+          </div>
+          <div class="col-md-6"
+               [ngClass]="{'error': newHappeningPlaceForm.controls.dateTo?.invalid && newHappeningPlaceForm.controls.dateTo?.touched}">
+            <em
+              *ngIf="newHappeningPlaceForm.controls.dateTo?.invalid && (newHappeningPlaceForm.controls.dateTo?.touched)">Required</em>
+            <input [(ngModel)]="happeningPlace.dateTo" name="dateTo" required id="happeningPlaceDateTo" type="datetime-local" class="form-control"
+                   placeholder="date to when happening ends (dd.MM.yyyy HH:MM:SS)...."/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="happeningPlaceNotes">Notes:</label>
+          <textarea [(ngModel)]="happeningPlace.notes" name="notes" id="happeningPlaceNotes" type="text" class="form-control"
+                    placeholder="notes..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" [disabled]="newHappeningPlaceForm.invalid" class="btn btn-default" (click)="cancel()">Cancel
+        </button>
+        <button type="button" class="btn btn-default" (click)="goBack()">Go back</button>
+      </form>
+    </div>
+
+  </div>
+</div>

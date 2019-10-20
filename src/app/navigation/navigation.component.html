@@ -52,7 +52,7 @@
       {{h.name}}
     </a>
     <h4 *ngIf="foundHappeningPlaces?.length">HAPPENING PLACES</h4>
-    <a class = "list-group-item" *ngFor="let hp of foundHappeningPlaces" [routerLink]="['/happeningplaces', hp.id]">
+    <a class = "list-group-item" *ngFor="let hp of foundHappeningPlaces" [routerLink]="['/happeningplace', hp.id]">
       {{hp.placeName}}
     </a>
   </div>

@@ -30,7 +30,7 @@ export class NavigationService extends MainService {
       // if not search term, return empty happening array.
       return of([]);
     }
-    const urlBySearchTerm = `${this.HAPPENING_PLACES_URL}search?searchTerm=${searchTerm}`;
+    const urlBySearchTerm = `${this.HAPPENING_PLACE_URL}search?searchTerm=${searchTerm}`;
 
     return this.http.get<HappeningPlace[]>(urlBySearchTerm).pipe(
       tap(_ => this.log(`found happening places matching "${urlBySearchTerm}"`)),

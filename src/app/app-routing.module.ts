@@ -5,7 +5,7 @@ import {FeedbackComponent} from './feedback/feedback.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HappeningDetailComponent } from './happenings/happening-detail/happening-detail.component';
-import {HappeningPlaceDetailFormComponent} from './happening-place/happening-place-detail-form/happening-place-detail-form.component';
+import {HappeningPlaceDetailFormSimpleComponent} from './happening-place/happening-place-detail-form-simple/happening-place-detail-form-simple.component';
 
 
 const routes: Routes = [
@@ -13,8 +13,8 @@ const routes: Routes = [
   { path: 'feedback', component: FeedbackComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'new', component: HappeningDetailComponent },
+  { path: 'happeningplace/:id', component: HappeningPlaceDetailFormSimpleComponent},
   { path: 'detail/:id', component: HappeningDetailComponent },
-  { path: 'happeningplaces/:id', component: HappeningPlaceDetailFormComponent},
   { path: '', component: HappeningsComponent, pathMatch: 'full' },
   { path: 'user', loadChildren: './user/user.module#UserModule' },
   { path: '**', component: NotFoundComponent},

@@ -12,9 +12,8 @@ export abstract class MainService {
   private mMessageService: MessageService;
   private mToastrService: Toastr;
 
-  protected HAPPENING_PLACES_URL = `${this.BASE_URL}/happeningplaces/`;
-  protected HAPPENING_PLACE_DELETE_URL = `${this.HAPPENING_PLACES_URL}/delete/`;
-  protected HAPPENING_PLACE_BYID_URL = `${this.BASE_URL}/happeningplaces/`;
+  protected HAPPENING_PLACE_URL = `${this.BASE_URL}/happeningplace/`;
+  protected HAPPENING_PLACE_DELETE_URL = `${this.HAPPENING_PLACE_URL}/delete/`;
 
   protected ALL_HAPPENINGS_URL = `${this.BASE_URL}/happenings/all`;
   protected HAPPENINGS_URL     = `${this.BASE_URL}/happenings/`;

@@ -19,6 +19,7 @@ import { HappeningPlaceDetailFormComponent } from './happening-place/happening-p
 import { AuthService } from './services/auth.service';
 import { CollapsibleWellComponent, SimpleModalComponent, ModalTriggerDirective } from './common/index';
 import { JQ_TOKEN, TOASTR_TOKEN, Toastr } from './services/index';
+import { HappeningPlaceDetailFormSimpleComponent } from './happening-place/happening-place-detail-form-simple/happening-place-detail-form-simple.component';
 
 const toastr: Toastr = window['toastr'];
 const jQuery = window['$'];
@@ -40,6 +41,7 @@ const jQuery = window['$'];
     CollapsibleWellComponent,
     SimpleModalComponent,
     ModalTriggerDirective,
+    HappeningPlaceDetailFormSimpleComponent,
   ],
   imports: [
     BrowserModule,
