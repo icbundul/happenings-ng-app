@@ -29,7 +29,7 @@ export class HappeningPlaceDetailFormComponent implements OnInit {
 
   ngOnInit() {
 
-     this.happeningPlaceService.getHappeningPlaceById(+this.route.snapshot.params['id'])
+     this.happeningPlaceService.getHappeningPlace(+this.route.snapshot.params['id'])
       .subscribe(happeningPlace => this.happeningPlace = happeningPlace);
 
 

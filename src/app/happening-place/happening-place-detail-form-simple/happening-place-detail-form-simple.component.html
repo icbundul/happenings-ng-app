@@ -11,6 +11,12 @@
   <div class="row">
     <div class="col-md-6">
       <form #newHappeningPlaceForm="ngForm" (ngSubmit)="save(newHappeningPlaceForm.value)" autocomplete="off" novalidate>
+
+        <div class="form-group">
+          <input type="hidden" [ngModel]="happeningPlace.happening.id" name="happeningId">
+          <input type="hidden" [ngModel]="happeningPlace.happening" name="happening">
+        </div>
+
         <div class="form-group">
           <label>ID: {{happeningPlace.id}}</label>
           <input type="hidden" [ngModel]="happeningPlace.id" name="id">
@@ -25,11 +31,11 @@
         </div>
 
         <div class="form-group"
-             [ngClass]="{'error': newHappeningPlaceForm.controls.adress?.invalid && newHappeningPlaceForm.controls.adress?.touched}">
-          <label for="happeningPlaceAdress">Adress:</label>
-          <em *ngIf="newHappeningPlaceForm.controls.adresss?.invalid && (newHappeningPlaceForm.controls.adress?.touched)">Required</em>
-          <input [(ngModel)]="happeningPlace.address"  name="adress" required id="happeningPlaceAdress" type="text" class="form-control"
-                 placeholder="adress of your happening place..."/>
+             [ngClass]="{'error': newHappeningPlaceForm.controls.address?.invalid && newHappeningPlaceForm.controls.address?.touched}">
+          <label for="happeningPlaceAddress">Address:</label>
+         <!-- <em *ngIf="newHappeningPlaceForm.controls.address?.invalid && (newHappeningPlaceForm.controls.address?.touched)">Required</em>-->
+          <input [(ngModel)]="happeningPlace.address"  name="address" required id="happeningPlaceAddress" type="text" class="form-control"
+                 placeholder="address of your happening place..."/>
         </div>
 
         <label for="happeningPlaceLocationY">Location - Latitude, Longitude:</label>
@@ -43,7 +49,7 @@
           <div class="col-md-6"
                [ngClass]="{'error': newHappeningPlaceForm.controls.locationX?.invalid && newHappeningPlaceForm.controls.locationX?.touched}">
             <em *ngIf="newHappeningPlaceForm.controls.locationX?.invalid && (newHappeningPlaceForm.controls.locationX?.touched)">Required</em>
-            <input [(ngModel)]="happeningPlace.locationX" name="locationY" required id="happeningPlaceLocationX" type="number" class="form-control"
+            <input [(ngModel)]="happeningPlace.locationX" name="locationX" required id="happeningPlaceLocationX" type="number" class="form-control"
                    placeholder="longitude...."/>
           </div>
         </div>
