@@ -19,6 +19,9 @@ export abstract class MainService {
   protected HAPPENINGS_URL     = `${this.BASE_URL}/happenings/`;
   protected ALL_HAPPENINGTYPES_URL = `${this.BASE_URL}/happenings/allHappeningTypes/`;
 
+  protected ALL_PLACE_OF_INTERESTS_URL = `${this.BASE_URL}/placeofinterest/all`;
+  protected PLACE_OF_INTEREST_URL = `${this.BASE_URL}/placeofinterest/`
+
   @Injectable()
   private router: Router;
 
