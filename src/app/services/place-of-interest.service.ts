@@ -39,4 +39,14 @@ export class PlaceOfInterestService extends MainService {
     return this.http.get<PlaceOfInterest>(`${this.PLACE_OF_INTEREST_URL}search?search=${searchTerm}`)
       .pipe(catchError(this.handleError<PlaceOfInterest>('searchPlaceOfInterests')));
   }
+
+  deletePlaceOfInterest(placeOfInterest: PlaceOfInterest | number)  {
+    const id = typeof placeOfInterest === 'number' ? placeOfInterest : placeOfInterest.id;
+
+    const deleteUrl = `${this.PLACE_OF_INTEREST_URL}delete/${id}`;
+
+    this.http.delete(deleteUrl)
+      .pipe(catchError(this.handleError('deletePlaceOfInterest')))
+      .subscribe();
+  }
 }

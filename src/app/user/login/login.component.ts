@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   username;
   password;
   mouseoverLogin;
+  loginInvalid = false;
 
   constructor(private authService: AuthService, private router: Router) {
   }
@@ -20,8 +21,16 @@ export class LoginComponent implements OnInit {
   }
 
   login(formValues) {
-    this.authService.loginUser(formValues.userName, formValues.password);
-    this.router.navigate(['dashboard']);
+    this.authService.loginUser(formValues.userName, formValues.password)
+      .subscribe(resp => {
+        if (!resp) {
+          // login is not successful
+          this.loginInvalid = true;
+        } else {
+          // login successful
+          this.router.navigate(['dashboard']);
+        }
+      });
   }
 
   cancel() {
